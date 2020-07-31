@@ -12,3 +12,8 @@ class Assets {
   static const String INFO_MUSEUM = 'assets/images/info_museum.jpg';
   static const String ITEM_1 = '';
 }
+
+class Urls {
+  static const String LOCAL_MUSEUM =
+      'https://www.google.com/maps/search/?api=1&query=40.438312751326876,-3.7231735889257416';
+}
