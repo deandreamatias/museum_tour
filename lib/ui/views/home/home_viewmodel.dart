@@ -14,4 +14,8 @@ class HomeViewModel extends BaseViewModel {
   Future navigateToOtherMuseums() async {
     await _navigationService.navigateTo(Routes.otherMuseumsView);
   }
+
+  Future navigateToCustomizeTour() async {
+    await _navigationService.navigateTo(Routes.customizeTourView);
+  }
 }

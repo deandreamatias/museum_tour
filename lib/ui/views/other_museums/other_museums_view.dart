@@ -2,19 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../app/constants.dart';
-import '../../widgets/button_grid.dart';
-import '../../widgets/chip_custom.dart';
 import '../../widgets/top_app_bar.dart';
-import 'home_viewmodel.dart';
+import 'other_museums_viewmodel.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({Key key}) : super(key: key);
+class OtherMuseumsView extends StatefulWidget {
+  const OtherMuseumsView({Key key}) : super(key: key);
 
   @override
-  _HomeViewState createState() => _HomeViewState();
+  _OtherMuseumsViewState createState() => _OtherMuseumsViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _OtherMuseumsViewState extends State<OtherMuseumsView> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
@@ -25,7 +23,7 @@ class _HomeViewState extends State<HomeView> {
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
               Expanded(
-                flex: 4,
+                flex: 1,
                 child: Stack(
                   alignment: Alignment.bottomRight,
                   children: <Widget>[
@@ -45,21 +43,21 @@ class _HomeViewState extends State<HomeView> {
                     Align(
                       alignment: Alignment.topCenter,
                       child: TopAppBar(
-                        title: 'Exposición pre colombina',
+                        title: 'Otros museos',
+                        onPressed: () => model.navigateToHome(),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: FloatingActionButton.extended(
-                        onPressed: () async =>
-                            await model.navigateToCustomizeTour(),
+                        onPressed: null,
                         icon: Icon(
-                          Icons.navigation,
+                          Icons.map,
                           color: CustomColor.TEXT_HIGH,
                         ),
                         backgroundColor: CustomColor.ACCENT,
                         label: Text(
-                          'INICIAR',
+                          'COMO LLEGAR',
                           style: TextStyle(
                             color: CustomColor.TEXT_HIGH,
                           ),
@@ -71,54 +69,13 @@ class _HomeViewState extends State<HomeView> {
               ),
               Expanded(
                 flex: 1,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    ButtonGrid(
-                      title: 'Información del museo',
-                      onPressed: () async =>
-                          await model.navigateToMuseumDetails(),
-                    ),
-                    ButtonGrid(
-                      title: 'Otros museos',
-                      onPressed: () async =>
-                          await model.navigateToOtherMuseums(),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Wrap(
-                  runAlignment: WrapAlignment.center,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  alignment: WrapAlignment.center,
-                  spacing: 8.0,
-                  children: <Widget>[
-                    ChipCustom(
-                      title: 'Español',
-                      selected: true,
-                    ),
-                    ChipCustom(
-                      title: 'English',
-                    ),
-                    ChipCustom(
-                      title: 'Português',
-                    ),
-                    ChipCustom(
-                      title: 'Italiano',
-                    ),
-                    ChipCustom(
-                      title: 'Française',
-                    ),
-                  ],
-                ),
+                child: Column(),
               ),
             ],
           ),
         ),
       ),
-      viewModelBuilder: () => HomeViewModel(),
+      viewModelBuilder: () => OtherMuseumsViewModel(),
     );
   }
 }
