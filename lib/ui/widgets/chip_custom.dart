@@ -6,10 +6,12 @@ class ChipCustom extends StatelessWidget {
   const ChipCustom({
     this.title,
     this.selected = false,
+    this.backgroundColor = Colors.white,
     Key key,
   }) : super(key: key);
   final String title;
   final bool selected;
+  final Color backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class ChipCustom extends StatelessWidget {
       onSelected: (bool) {},
       selected: selected,
       showCheckmark: false,
-      backgroundColor: CustomColor.BACKGROUND,
+      backgroundColor: backgroundColor,
       selectedColor: CustomColor.ACCENT.withOpacity(0.6),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(32.0),
