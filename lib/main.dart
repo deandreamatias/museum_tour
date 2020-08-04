@@ -17,6 +17,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Museum tour',
+      theme: ThemeData(fontFamily: 'Quicksand'),
       home: HomeView(),
       onGenerateRoute: Router().onGenerateRoute,
       navigatorKey: locator<NavigationService>().navigatorKey,
