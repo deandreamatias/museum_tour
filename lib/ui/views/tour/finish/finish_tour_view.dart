@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../../app/constants.dart';
@@ -87,7 +88,7 @@ class FinishTourView extends StatelessWidget {
                   child: FloatingActionButton.extended(
                     onPressed: () async => await model.navigateToHome(),
                     icon: Icon(
-                      Icons.share,
+                      FeatherIcons.share2,
                       color: CustomColor.TEXT_HIGH,
                     ),
                     backgroundColor: CustomColor.ACCENT,
@@ -123,7 +124,7 @@ class FinishTourView extends StatelessWidget {
                   ),
                   FlatButton.icon(
                     onPressed: () async => await model.navigateToHome(),
-                    icon: Icon(Icons.home),
+                    icon: Icon(FeatherIcons.home),
                     label: Text('INICIO'),
                   )
                 ],

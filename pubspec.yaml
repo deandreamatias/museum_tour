@@ -20,6 +20,7 @@ dependencies:
   url_launcher: ^5.5.0
   flutter_translate: ^1.6.0
   adobe_xd: ^1.0.0+1
+  flutter_feather_icons: ^1.0.3
 
 dev_dependencies:
   flutter_test:

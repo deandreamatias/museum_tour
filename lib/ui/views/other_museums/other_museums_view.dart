@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../app/constants.dart';
@@ -52,7 +53,7 @@ class _OtherMuseumsViewState extends State<OtherMuseumsView> {
                       child: FloatingActionButton.extended(
                         onPressed: null,
                         icon: Icon(
-                          Icons.map,
+                          FeatherIcons.map,
                           color: CustomColor.TEXT_HIGH,
                         ),
                         backgroundColor: CustomColor.ACCENT,

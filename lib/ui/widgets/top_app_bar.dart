@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:museum_tour/app/constants.dart';
 
 class TopAppBar extends StatelessWidget {
@@ -30,7 +31,7 @@ class TopAppBar extends StatelessWidget {
         child: AppBar(
           leading: onPressed != null
               ? IconButton(
-                  icon: const Icon(Icons.home),
+                  icon: const Icon(FeatherIcons.home),
                   onPressed: () async => await onPressed(),
                   color:
                       hasImageBackground ? Colors.white : CustomColor.TEXT_HIGH,

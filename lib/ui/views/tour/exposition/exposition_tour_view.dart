@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:museum_tour/app/constants.dart';
 import 'package:museum_tour/ui/widgets/top_app_bar.dart';
 import 'package:stacked/stacked.dart';
@@ -52,7 +53,7 @@ class ExpositionTourView extends StatelessWidget {
                               height: 48.0,
                               width: 56.0,
                               child: RaisedButton(
-                                child: Icon(Icons.arrow_back),
+                                child: Icon(FeatherIcons.skipBack),
                                 color: CustomColor.BACKGROUND,
                                 onPressed: () => model.navigateBack(),
                                 shape: RoundedRectangleBorder(
@@ -72,7 +73,7 @@ class ExpositionTourView extends StatelessWidget {
                             onPressed: () async =>
                                 await model.navigateToFinishTour(),
                             icon: Icon(
-                              Icons.fast_forward,
+                              FeatherIcons.skipForward,
                               color: CustomColor.TEXT_HIGH,
                             ),
                             backgroundColor: CustomColor.ACCENT,
@@ -118,7 +119,7 @@ class ExpositionTourView extends StatelessWidget {
                                   height: 40.0,
                                   width: 56.0,
                                   child: RaisedButton(
-                                    child: Icon(Icons.play_circle_outline),
+                                    child: Icon(FeatherIcons.playCircle),
                                     color: Colors.white,
                                     onPressed: () {},
                                     elevation: 0.0,

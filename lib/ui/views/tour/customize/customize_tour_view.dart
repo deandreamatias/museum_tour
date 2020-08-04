@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../../app/constants.dart';
@@ -32,13 +33,10 @@ class CustomizeTourView extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Align(
-                        alignment: Alignment.topCenter,
-                        child: TopAppBar(
-                          title: 'Personalizar tu guía',
-                          onPressed: () => model.navigateToHome(),
-                          hasImageBackground: false,
-                        ),
+                      TopAppBar(
+                        title: 'Personalizar tu guía',
+                        onPressed: () => model.navigateToHome(),
+                        hasImageBackground: false,
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -130,7 +128,7 @@ class CustomizeTourView extends StatelessWidget {
                     onPressed: () async =>
                         await model.navigateToExpositionTour(),
                     icon: Icon(
-                      Icons.navigation,
+                      FeatherIcons.navigation2,
                       color: CustomColor.TEXT_HIGH,
                     ),
                     backgroundColor: CustomColor.ACCENT,

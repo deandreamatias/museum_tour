@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:museum_tour/ui/widgets/top_app_bar.dart';
 import 'package:stacked/stacked.dart';
 
@@ -53,7 +54,7 @@ class _MuseumDetailsViewState extends State<MuseumDetailsView> {
                       child: FloatingActionButton.extended(
                         onPressed: () async => await model.openMap(),
                         icon: Icon(
-                          Icons.map,
+                          FeatherIcons.map,
                           color: CustomColor.TEXT_HIGH,
                         ),
                         backgroundColor: CustomColor.ACCENT,
