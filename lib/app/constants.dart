@@ -10,7 +10,7 @@ class CustomColor {
 class Assets {
   static const String EXPO_MUSEUM = 'assets/images/expo_museum.jpg';
   static const String INFO_MUSEUM = 'assets/images/info_museum.jpg';
-  static const String ITEM_1 = '';
+  static const String SCULPTURE = 'assets/images/sculpture.jpg';
 }
 
 class Urls {

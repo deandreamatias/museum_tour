@@ -14,4 +14,8 @@ class ExpositionTourViewModel extends BaseViewModel {
   Future navigateToFinishTour() async {
     await _navigationService.navigateTo(Routes.finishTourView);
   }
+
+  void navigateBack() async {
+    _navigationService.back();
+  }
 }
