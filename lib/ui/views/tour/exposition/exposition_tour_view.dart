@@ -11,9 +11,10 @@ class ExpositionTourView extends StatelessWidget {
   const ExpositionTourView({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    PageController controller = PageController(initialPage: 1);
     return ViewModelBuilder.reactive(
-      builder: (context, model, child) => Scaffold(
+      onModelReady: (ExpositionTourViewModel model) async =>
+          await model.getExpoItem(),
+      builder: (context, ExpositionTourViewModel model, child) => Scaffold(
         backgroundColor: CustomColor.BACKGROUND,
         body: LayoutBuilder(
           builder: (context, constraints) => Container(
@@ -48,7 +49,7 @@ class ExpositionTourView extends StatelessWidget {
                               Align(
                                 alignment: Alignment.topCenter,
                                 child: TopAppBar(
-                                  title: 'Chalchuhtlicue',
+                                  title: model.item?.name ?? 'Cargando',
                                   onPressed: () => model.navigateToHome(),
                                 ),
                               ),
@@ -62,7 +63,7 @@ class ExpositionTourView extends StatelessWidget {
                                     child: RaisedButton(
                                       child: Icon(FeatherIcons.skipBack),
                                       color: CustomColor.BACKGROUND,
-                                      onPressed: () => model.navigateBack(),
+                                      onPressed: () => model.backExpo(),
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(32.0),
@@ -79,7 +80,7 @@ class ExpositionTourView extends StatelessWidget {
                                 child: FloatingActionButton.extended(
                                   heroTag: 'fab',
                                   onPressed: () async =>
-                                      await model.navigateToFinishTour(),
+                                      await model.continueExpo(),
                                   icon: Icon(
                                     FeatherIcons.skipForward,
                                     color: CustomColor.TEXT_HIGH,
@@ -98,61 +99,70 @@ class ExpositionTourView extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                          child: model.isBusy
+                              ? CircularProgressIndicator()
+                              : Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
                                       children: <Widget>[
-                                        Text('Datación: 1400 - 1520'),
-                                        SizedBox(height: 4),
-                                        Text('Técnica: Picado. Pulido.'),
-                                        SizedBox(height: 4),
-                                        Text('Lugar de procedencia: México'),
-                                      ],
-                                    ),
-                                  ),
-                                  Column(
-                                    children: <Widget>[
-                                      Text('Audio guía'),
-                                      SizedBox(height: 4),
-                                      SizedBox(
-                                        height: 40.0,
-                                        width: 56.0,
-                                        child: RaisedButton(
-                                          child: Icon(FeatherIcons.playCircle),
-                                          color: Colors.white,
-                                          onPressed: () {},
-                                          elevation: 0.0,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(32.0),
-                                            side: BorderSide(
-                                              color: CustomColor.ACCENT,
-                                            ),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              Text(
+                                                  'Datación: ${model.item.date}'),
+                                              SizedBox(height: 4),
+                                              Text(
+                                                  'Técnica: ${model.item.technique}'),
+                                              SizedBox(height: 4),
+                                              Text(
+                                                  'Lugar de procedencia: ${model.item.locale}'),
+                                            ],
                                           ),
                                         ),
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ),
-                              SizedBox(height: 8),
-                              Text(
-                                'Descripción: Figura escultórica femenina arrodillada sentada sobre sus talones y con las dos manos sobre las rodillas. Lleva un tocado debajo del cual se aprecian los bordes del flequillo y del que penden una serie de discos. Su tocado consiste en varias bandas anchas, lleva falda y camisa femenina en pico, adornada con borlas colgantes.',
-                              ),
-                              SizedBox(height: 56),
-                            ],
-                          ),
+                                        Column(
+                                          children: <Widget>[
+                                            Text('Audio guía'),
+                                            SizedBox(height: 4),
+                                            SizedBox(
+                                              height: 40.0,
+                                              width: 56.0,
+                                              child: RaisedButton(
+                                                child: Icon(
+                                                    FeatherIcons.playCircle),
+                                                color: Colors.white,
+                                                onPressed: () {},
+                                                elevation: 0.0,
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          32.0),
+                                                  side: BorderSide(
+                                                    color: CustomColor.ACCENT,
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(height: 8),
+                                    Text(
+                                      'Descripción: ${model.item.description}',
+                                    ),
+                                    SizedBox(height: 56),
+                                  ],
+                                ),
                         ),
                       ],
                     ),
@@ -174,25 +184,25 @@ class ExpositionTourView extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      SmoothPageIndicator(
-                        controller: controller,
-                        count: 20,
-                        effect: ScrollingDotsEffect(
-                          activeDotColor: CustomColor.ACCENT,
-                          dotColor: CustomColor.ACCENT.withOpacity(0.6),
-                          spacing: 16.0,
-                          maxVisibleDots: 7,
+                  child: model.isBusy
+                      ? Container()
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            AnimatedSmoothIndicator(
+                              activeIndex: model.index,
+                              count: model.lengthItem,
+                              effect: ScrollingDotsEffect(
+                                activeDotColor: CustomColor.ACCENT,
+                                dotColor: CustomColor.ACCENT.withOpacity(0.6),
+                                spacing: 16.0,
+                                maxVisibleDots: 7,
+                              ),
+                              onDotClicked: (index) => model.jumpToExpo(index),
+                            ),
+                            Text('${model.index}/${model.lengthItem}'),
+                          ],
                         ),
-                        onDotClicked: (index) {
-                          print(index);
-                        },
-                      ),
-                      Text('1/20'),
-                    ],
-                  ),
                 )
               ],
             ),

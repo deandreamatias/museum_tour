@@ -11,9 +11,7 @@ class Assets {
   static const String EXPO_MUSEUM = 'assets/images/expo_museum.jpg';
   static const String INFO_MUSEUM = 'assets/images/info_museum.jpg';
   static const String SCULPTURE = 'assets/images/sculpture.jpg';
-}
-
-class Urls {
-  static const String LOCAL_MUSEUM =
-      'https://www.google.com/maps/search/?api=1&query=40.438312751326876,-3.7231735889257416';
+  static const String EXPOSITION_PATH = 'assets/json/exposition.json';
+  static const String MUSEUMS_PATH = 'assets/json/museums.json';
+  static const String MAIN_MUSEUM_PATH = 'assets/json/main_museum.json';
 }
