@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:museum_tour/app/constants.dart';
+import 'package:museum_tour/ui/smart_widgets/expo_indicator/expo_indicator.dart';
 import 'package:museum_tour/ui/widgets/top_app_bar.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:stacked/stacked.dart';
 
 import 'exposition_tour_viewmodel.dart';
@@ -12,8 +12,6 @@ class ExpositionTourView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
-      onModelReady: (ExpositionTourViewModel model) async =>
-          await model.getExpoItem(),
       builder: (context, ExpositionTourViewModel model, child) => Scaffold(
         backgroundColor: CustomColor.BACKGROUND,
         body: LayoutBuilder(
@@ -182,28 +180,7 @@ class ExpositionTourView extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: model.isBusy
-                      ? Container()
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-                            AnimatedSmoothIndicator(
-                              activeIndex: model.index,
-                              count: model.lengthItem,
-                              effect: ScrollingDotsEffect(
-                                activeDotColor: CustomColor.ACCENT,
-                                dotColor: CustomColor.ACCENT.withOpacity(0.6),
-                                spacing: 16.0,
-                                maxVisibleDots: 7,
-                              ),
-                              onDotClicked: (index) => model.jumpToExpo(index),
-                            ),
-                            Text('${model.index}/${model.lengthItem}'),
-                          ],
-                        ),
-                )
+                ExpoIndicator(),
               ],
             ),
           ),

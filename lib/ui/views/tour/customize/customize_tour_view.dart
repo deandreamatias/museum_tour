@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:museum_tour/ui/smart_widgets/expo_indicator/expo_indicator.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../../app/constants.dart';
@@ -13,7 +13,6 @@ class CustomizeTourView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    PageController controller = PageController(initialPage: 0);
     return ViewModelBuilder.reactive(
       builder: (context, model, child) => Scaffold(
         backgroundColor: CustomColor.BACKGROUND,
@@ -194,28 +193,7 @@ class CustomizeTourView extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      SmoothPageIndicator(
-                        controller: controller,
-                        count: 20,
-                        effect: ScrollingDotsEffect(
-                          activeDotColor: CustomColor.ACCENT,
-                          dotColor: CustomColor.ACCENT.withOpacity(0.6),
-                          spacing: 16.0,
-                          maxVisibleDots: 7,
-                        ),
-                        onDotClicked: (index) {
-                          print(index);
-                        },
-                      ),
-                      Text('0/20'),
-                    ],
-                  ),
-                )
+                ExpoIndicator()
               ],
             ),
           ),
