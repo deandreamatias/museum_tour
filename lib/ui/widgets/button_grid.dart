@@ -15,6 +15,7 @@ class ButtonGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      borderRadius: BorderRadius.circular(32.0),
       onTap: () => onPressed(),
       child: Container(
         height: 120.0,
