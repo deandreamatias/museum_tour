@@ -22,6 +22,8 @@ dependencies:
   adobe_xd: ^1.0.0+1
   flutter_feather_icons: ^1.0.3
   smooth_page_indicator: ^0.2.0
+  chips_choice:
+    git: git@github.com:deandreamatias/flutter_chips_choice.git
 
 dev_dependencies:
   flutter_test:

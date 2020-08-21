@@ -7,11 +7,13 @@ class ChipCustom extends StatelessWidget {
     this.title,
     this.selected = false,
     this.backgroundColor = Colors.white,
+    this.onSelected,
     Key key,
   }) : super(key: key);
   final String title;
   final bool selected;
   final Color backgroundColor;
+  final Function(bool) onSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class ChipCustom extends StatelessWidget {
         title,
         style: TextStyle(color: CustomColor.TEXT_MEDIUM),
       ),
-      onSelected: (bool) {},
+      onSelected: onSelected,
       selected: selected,
       showCheckmark: false,
       backgroundColor: backgroundColor,
