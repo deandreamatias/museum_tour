@@ -4,32 +4,61 @@ import '../models/time.dart';
 
 @lazySingleton
 class TimeService {
-  List<Time> listTime = [];
-  Stopwatch stopwatch = Stopwatch();
+  /// List to save time from each item
+  List<Time> _listTime = [];
+  Stopwatch _stopwatch = Stopwatch();
 
-  void startStopwatch() {
-    stopwatch.start();
+  Stopwatch get stopwatch => _stopwatch;
+  List<Time> get listTime => _listTime;
+
+  /// Start time counter
+  void startTime() {
+    _stopwatch.start();
   }
 
-  void cleanStopwatch() {
-    stopwatch.stop();
-    stopwatch.reset();
-  }
-
+  /// Save time with [expoId] in list and reset time counter.
+  /// If [expoId] exist, will add time to it
   void saveTime(int expoId) {
-    listTime
-      ..add(Time(
+    int _indexExpo;
+
+    if (_listTime.isNotEmpty)
+      _indexExpo = _listTime.indexWhere((item) => item.expoId == expoId);
+
+    if (_indexExpo == null || _indexExpo == -1) {
+      _listTime.add(Time(
         expoId: expoId,
-        time: stopwatch.elapsedMilliseconds,
+        time: _stopwatch.elapsedMilliseconds,
       ));
+    } else {
+      final Time _itemToUpdate = _listTime.elementAt(_indexExpo);
+      _listTime.replaceRange(_indexExpo, _indexExpo + 1, [
+        Time(
+            expoId: expoId,
+            time: _itemToUpdate.time + _stopwatch.elapsedMilliseconds)
+      ]);
+    }
+    _resetTime();
   }
 
-  void cleanListTime() {
-    listTime = [];
+  /// Clear list time and reset time counter
+  void clearTime() {
+    _listTime.clear();
+    _resetTime();
   }
 
+  /// Get higher time value in list time
+  /// If list time is empty, throw a error
   Time getHigherTime() {
-    listTime.sort((a, b) => a.time.compareTo(b.time));
-    return listTime.first;
+    if (_listTime.isNotEmpty) {
+      _listTime.sort((a, b) => a.time.compareTo(b.time));
+      return _listTime.last;
+    } else {
+      throw 'List time is empty';
+    }
+  }
+
+  void _resetTime() {
+    _stopwatch.stop();
+    _stopwatch.reset();
   }
 }
