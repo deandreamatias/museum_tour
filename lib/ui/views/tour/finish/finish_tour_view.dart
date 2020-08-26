@@ -12,7 +12,7 @@ class FinishTourView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.nonReactive(
-      builder: (context, model, child) => Scaffold(
+      builder: (context, FinishTourViewModel model, child) => Scaffold(
         backgroundColor: CustomColor.BACKGROUND,
         body: LayoutBuilder(
           builder: (context, constraints) => SingleChildScrollView(
@@ -53,7 +53,7 @@ class FinishTourView extends StatelessWidget {
                             margin: const EdgeInsets.all(8.0),
                             child: Center(
                               child: Text(
-                                'Chalchiuhtlicue',
+                                model.expoFavItem.name,
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline5

@@ -23,7 +23,7 @@ class ExpoIndicator extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   AnimatedSmoothIndicator(
-                    activeIndex: model.index,
+                    activeIndex: model.indicator,
                     count: model.lengthItem,
                     effect: ScrollingDotsEffect(
                       activeDotColor: CustomColor.ACCENT,
@@ -31,10 +31,9 @@ class ExpoIndicator extends StatelessWidget {
                       spacing: 16.0,
                       maxVisibleDots: 7,
                     ),
-                    onDotClicked: (updateIndex) =>
-                        model.jumpToExpo(updateIndex),
+                    onDotClicked: (updateIndex) {},
                   ),
-                  Text('${model.index}/${model.lengthIndicator}'),
+                  Text('${model.indicator}/${model.lengthIndicator}'),
                 ],
               ),
       ),

@@ -10,11 +10,16 @@ class CustomizeTourViewModel extends BaseViewModel {
   final _tourService = locator<TourService>();
 
   Future navigateToHome() async {
+    resetTour();
     await _navigationService.navigateTo(Routes.homeView);
   }
 
   Future navigateToExpositionTour() async {
-    _tourService.navigateExpo();
+    _tourService.startTour();
     await _navigationService.navigateTo(Routes.expositionTourView);
+  }
+
+  Future<bool> resetTour() {
+    return Future.value(_tourService.finishExpo());
   }
 }

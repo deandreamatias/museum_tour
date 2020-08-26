@@ -10,14 +10,16 @@ class ExpositionTourViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final _tourService = locator<TourService>();
 
-  Item get item => _tourService.item;
+  Item get item => _tourService.getItem();
 
   Future navigateToHome() async {
+    _tourService.finishExpo();
     await _navigationService.navigateTo(Routes.homeView);
   }
 
   Future continueExpo() async {
     if (_tourService.lastItem) {
+      _tourService.finishExpo(getFavItem: true);
       await _navigationService.navigateTo(Routes.finishTourView);
     } else {
       setBusy(true);
@@ -28,7 +30,7 @@ class ExpositionTourViewModel extends BaseViewModel {
 
   void backExpo() async {
     if (_tourService.firstItem) {
-      _tourService.navigateExpo(continueExpo: false);
+      _tourService.finishExpo();
       _navigationService.back();
     } else {
       setBusy(true);
