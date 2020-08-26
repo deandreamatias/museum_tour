@@ -1,3 +1,4 @@
+import 'package:chips_choice/chips_choice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:stacked/stacked.dart';
@@ -19,7 +20,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
-      builder: (context, model, child) => Scaffold(
+      builder: (context, HomeViewModel model, child) => Scaffold(
         backgroundColor: CustomColor.BACKGROUND,
         body: Column(
           mainAxisSize: MainAxisSize.max,
@@ -88,39 +89,32 @@ class _HomeViewState extends State<HomeView> {
             ),
             Expanded(
               flex: 1,
-              child: Wrap(
-                runAlignment: WrapAlignment.center,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                alignment: WrapAlignment.center,
-                spacing: 8.0,
-                children: <Widget>[
-                  ChipCustom(
-                    title: 'Español',
-                    selected: true,
-                    backgroundColor: CustomColor.BACKGROUND,
-                  ),
-                  ChipCustom(
-                    title: 'English',
-                    backgroundColor: CustomColor.BACKGROUND,
-                  ),
-                  ChipCustom(
-                    title: 'Português',
-                    backgroundColor: CustomColor.BACKGROUND,
-                  ),
-                  ChipCustom(
-                    title: 'Italiano',
-                    backgroundColor: CustomColor.BACKGROUND,
-                  ),
-                  ChipCustom(
-                    title: 'Français',
-                    backgroundColor: CustomColor.BACKGROUND,
-                  ),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: model.isBusy
+                    ? CircularProgressIndicator()
+                    : ChipsChoice<int>.single(
+                        wrapAlignment: WrapAlignment.center,
+                        value: model.index,
+                        options: ChipsChoiceOption.listFrom<int, String>(
+                          source: model.listLanguages,
+                          value: (i, v) => i,
+                          label: (i, v) => v,
+                        ),
+                        itemBuilder: (item, selected, select) => ChipCustom(
+                          selected: selected,
+                          title: item.label,
+                          onSelected: select,
+                        ),
+                        onChanged: (val) => model.setLanguage(val),
+                        isWrapped: true,
+                      ),
               ),
             ),
           ],
         ),
       ),
+      onModelReady: (HomeViewModel model) => model.loadLanguages(),
       viewModelBuilder: () => HomeViewModel(),
     );
   }
