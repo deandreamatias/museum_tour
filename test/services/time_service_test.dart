@@ -9,18 +9,23 @@ void main() {
     final int _correctId = 1;
     setUp(() => registerServices());
     tearDown(() => unregisterServices());
-    test('When constructed, listTime should be List<Time>', () {
+    test('When constructed, listTime should be List<Time> and empty', () {
       final service = TimeService();
+
       expect(service.listTime, isA<List<Time>>());
+      expect(service.listTime.isEmpty, true);
     });
     test('When constructed, stopwatch elapsedTicks should be 0', () {
       final service = TimeService();
+
       expect(service.stopwatch.elapsedTicks, 0);
     });
     group('Stopwatch -', () {
       test('When start is called, stopwatch should being run', () {
         final service = TimeService();
+        
         service.startTime();
+
         expect(service.stopwatch.isRunning, true);
       });
     });
@@ -37,15 +42,14 @@ void main() {
         final service = TimeService();
 
         service.startTime();
-        service.saveTime(_correctId);
-        service.startTime();
+        service.saveTime(_correctId, restartTime: true);
         await Future.delayed(Duration(milliseconds: 10));
         service.saveTime(_correctId);
 
         expect(service.listTime.first.time, greaterThanOrEqualTo(10));
       });
       test(
-          'When clear is called, list length should be 0 and stopwath not running',
+          'When clear is called, list should be empty',
           () {
         final service = TimeService();
 
@@ -53,8 +57,7 @@ void main() {
         service.saveTime(_correctId);
         service.clearTime();
 
-        expect(service.listTime.length, 0);
-        expect(service.stopwatch.isRunning, false);
+        expect(service.listTime.isEmpty, true);
       });
     });
     group('Higher time -', () {
@@ -65,8 +68,7 @@ void main() {
 
         service.startTime();
         await Future.delayed(Duration(milliseconds: 10));
-        service.saveTime(_correctId);
-        service.startTime();
+        service.saveTime(_correctId, restartTime: true);
         service.saveTime(_correctId + 1);
         final Time _time = service.getHigherTime();
 
