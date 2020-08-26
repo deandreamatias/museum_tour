@@ -3,7 +3,7 @@ import 'package:stacked_services/stacked_services.dart';
 
 import 'app/locator.dart';
 import 'app/router.gr.dart';
-import 'ui/views/home/home_view.dart';
+import 'ui/views/splash/splash_view.dart';
 
 void main() {
   setupLocator();
@@ -18,7 +18,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Museum tour',
       theme: ThemeData(fontFamily: 'Quicksand'),
-      home: HomeView(),
+      home: SplashView(),
       onGenerateRoute: Router().onGenerateRoute,
       navigatorKey: locator<NavigationService>().navigatorKey,
     );

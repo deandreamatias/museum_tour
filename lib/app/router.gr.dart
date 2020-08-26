@@ -12,18 +12,21 @@ import 'package:flutter/material.dart';
 import '../ui/views/home/home_view.dart';
 import '../ui/views/museum_details/museum_details_view.dart';
 import '../ui/views/other_museums/other_museums_view.dart';
+import '../ui/views/splash/splash_view.dart';
 import '../ui/views/tour/customize/customize_tour_view.dart';
 import '../ui/views/tour/exposition/exposition_tour_view.dart';
 import '../ui/views/tour/finish/finish_tour_view.dart';
 
 class Routes {
-  static const String homeView = '/';
+  static const String splashView = '/';
+  static const String homeView = '/home-view';
   static const String museumDetailsView = '/museum-details-view';
   static const String otherMuseumsView = '/other-museums-view';
   static const String customizeTourView = '/customize-tour-view';
   static const String expositionTourView = '/exposition-tour-view';
   static const String finishTourView = '/finish-tour-view';
   static const all = <String>{
+    splashView,
     homeView,
     museumDetailsView,
     otherMuseumsView,
@@ -37,6 +40,7 @@ class Router extends RouterBase {
   @override
   List<RouteDef> get routes => _routes;
   final _routes = <RouteDef>[
+    RouteDef(Routes.splashView, page: SplashView),
     RouteDef(Routes.homeView, page: HomeView),
     RouteDef(Routes.museumDetailsView, page: MuseumDetailsView),
     RouteDef(Routes.otherMuseumsView, page: OtherMuseumsView),
@@ -47,6 +51,12 @@ class Router extends RouterBase {
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
   final _pagesMap = <Type, AutoRouteFactory>{
+    SplashView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const SplashView(),
+        settings: data,
+      );
+    },
     HomeView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => const HomeView(),
