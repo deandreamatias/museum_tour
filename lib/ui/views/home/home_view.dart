@@ -46,7 +46,7 @@ class _HomeViewState extends State<HomeView> {
                   Align(
                     alignment: Alignment.topCenter,
                     child: TopAppBar(
-                      title: 'Exposición pre colombina',
+                      title: 'Exposición',
                     ),
                   ),
                   Padding(

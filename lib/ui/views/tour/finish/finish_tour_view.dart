@@ -42,7 +42,7 @@ class FinishTourView extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Text(
-                              'Ana Júlia, has finalizado tu visita a la exposición pre colombina',
+                              'Persona, has finalizado tu visita a la exposición',
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -115,7 +115,7 @@ class FinishTourView extends StatelessWidget {
                           SizedBox(width: 8.0),
                           Expanded(
                             child: Text(
-                              'También puedes ver donde se encuentran otros museos de historia de América',
+                              'También puedes ver donde se encuentran otros museos de historia',
                               textAlign: TextAlign.center,
                             ),
                           )
