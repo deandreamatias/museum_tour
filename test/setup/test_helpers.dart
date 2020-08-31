@@ -2,10 +2,13 @@ import 'package:mockito/mockito.dart';
 import 'package:museum_tour/app/locator.dart';
 import 'package:museum_tour/models/exposition.dart';
 import 'package:museum_tour/models/time.dart';
+import 'package:museum_tour/services/directory_service.dart';
 import 'package:museum_tour/services/media_services.dart';
 import 'package:museum_tour/services/time_service.dart';
 import 'package:museum_tour/services/tour_service.dart';
 import 'package:stacked_services/stacked_services.dart';
+
+import 'test_constants.dart';
 
 class NavigationServiceMock extends Mock implements NavigationService {}
 
@@ -34,6 +37,8 @@ class TourServiceMock extends Mock implements TourService {
     _favItem = _items.singleWhere((item) => item.id == 1);
   }
 }
+
+class DirectoryServiceMock extends Mock implements DirectoryService {}
 
 NavigationService getAndRegisterNavigationServiceMock() {
   _removeRegistrationIfExists<NavigationService>();
@@ -73,11 +78,30 @@ TourService getAndRegisterTourServiceMock() {
   return service;
 }
 
+DirectoryService getAndRegisterDirectoryServiceMock({bool hasError = false}) {
+  _removeRegistrationIfExists<DirectoryService>();
+  final service = DirectoryServiceMock();
+
+  if (hasError) {
+    when(service.getPath()).thenThrow(
+      UnimplementedError('Error to get path directory:'),
+    );
+  } else {
+    when(service.getPath()).thenAnswer(
+      (_) => Future<String>.value(TestConstants.PATH),
+    );
+  }
+
+  locator.registerSingleton<DirectoryService>(service);
+  return service;
+}
+
 void registerServices() {
   getAndRegisterNavigationServiceMock();
   getAndRegisterMediaServiceMock();
   getAndRegisterTimeServiceMock();
   getAndRegisterTourServiceMock();
+  getAndRegisterDirectoryServiceMock();
 }
 
 void unregisterServices() {
@@ -85,6 +109,7 @@ void unregisterServices() {
   locator.unregister<NavigationService>();
   locator.unregister<TimeService>();
   locator.unregister<TourService>();
+  locator.unregister<DirectoryService>();
 }
 
 void _removeRegistrationIfExists<T>() {
