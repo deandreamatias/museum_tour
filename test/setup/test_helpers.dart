@@ -2,6 +2,7 @@ import 'package:mockito/mockito.dart';
 import 'package:museum_tour/app/locator.dart';
 import 'package:museum_tour/models/exposition.dart';
 import 'package:museum_tour/models/time.dart';
+import 'package:museum_tour/services/local_storage_service.dart';
 import 'package:museum_tour/services/directory_service.dart';
 import 'package:museum_tour/services/media_services.dart';
 import 'package:museum_tour/services/time_service.dart';
@@ -39,6 +40,12 @@ class TourServiceMock extends Mock implements TourService {
 }
 
 class DirectoryServiceMock extends Mock implements DirectoryService {}
+
+class HiveServiceMock extends Mock implements HiveService {
+  HiveServiceMock(this.directoryRepository);
+
+  final DirectoryService directoryRepository;
+}
 
 NavigationService getAndRegisterNavigationServiceMock() {
   _removeRegistrationIfExists<NavigationService>();
@@ -78,7 +85,10 @@ TourService getAndRegisterTourServiceMock() {
   return service;
 }
 
-DirectoryService getAndRegisterDirectoryServiceMock({bool hasError = false}) {
+DirectoryService getAndRegisterDirectoryServiceMock({
+  bool hasError = false,
+  bool staticPath = true,
+}) {
   _removeRegistrationIfExists<DirectoryService>();
   final service = DirectoryServiceMock();
 
@@ -88,11 +98,22 @@ DirectoryService getAndRegisterDirectoryServiceMock({bool hasError = false}) {
     );
   } else {
     when(service.getPath()).thenAnswer(
-      (_) => Future<String>.value(TestConstants.PATH),
+      (_) => Future<String>.value(
+        staticPath
+            ? TestConstants.PATH
+            : DateTime.now().millisecondsSinceEpoch.toString(),
+      ),
     );
   }
 
   locator.registerSingleton<DirectoryService>(service);
+  return service;
+}
+
+HiveService getAndRegisterHiveServiceMock({DirectoryService directory}) {
+  _removeRegistrationIfExists<HiveService>();
+  final service = HiveServiceMock(directory);
+  locator.registerSingleton<HiveService>(service);
   return service;
 }
 
@@ -102,6 +123,7 @@ void registerServices() {
   getAndRegisterTimeServiceMock();
   getAndRegisterTourServiceMock();
   getAndRegisterDirectoryServiceMock();
+  getAndRegisterHiveServiceMock();
 }
 
 void unregisterServices() {
@@ -110,6 +132,7 @@ void unregisterServices() {
   locator.unregister<TimeService>();
   locator.unregister<TourService>();
   locator.unregister<DirectoryService>();
+  locator.unregister<HiveService>();
 }
 
 void _removeRegistrationIfExists<T>() {
