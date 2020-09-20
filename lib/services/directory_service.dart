@@ -7,7 +7,7 @@ abstract class DirectoryService {
   Future<String> getPath();
 }
 
-@lazySingleton
+@LazySingleton(as : DirectoryService)
 class PathProviderService implements DirectoryService {
   @override
   Future<String> getPath() async {
