@@ -1,3 +1,4 @@
+import 'package:chips_choice/chips_choice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:museum_tour/ui/smart_widgets/expo_indicator/expo_indicator.dart';
@@ -55,6 +56,10 @@ class CustomizeTourView extends StatelessWidget {
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 16.0),
                                       child: TextField(
+                                        keyboardType: TextInputType.name,
+                                        textInputAction: TextInputAction.done,
+                                        textCapitalization: TextCapitalization.words,
+                                        controller: model.textEditingController,
                                         decoration: InputDecoration(
                                           labelText: 'Tu nombre',
                                           border: OutlineInputBorder(),
@@ -68,35 +73,29 @@ class CustomizeTourView extends StatelessWidget {
                                       child: Text(
                                           'Idioma de textos e audios guía'),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 16.0),
-                                      child: Wrap(
-                                        runAlignment: WrapAlignment.center,
-                                        crossAxisAlignment:
-                                            WrapCrossAlignment.center,
-                                        alignment: WrapAlignment.start,
-                                        spacing: 8.0,
-                                        children: <Widget>[
-                                          ChipCustom(
-                                            title: 'Español',
-                                            selected: true,
+                                    model.isBusy
+                                        ? CircularProgressIndicator()
+                                        : ChipsChoice<int>.single(
+                                            value: model.indexLanguage,
+                                            options: ChipsChoiceOption.listFrom<
+                                                int, String>(
+                                              source: model.listLanguages,
+                                              value: (i, v) => i,
+                                              label: (i, v) => v,
+                                            ),
+                                            itemBuilder:
+                                                (item, selected, select) =>
+                                                    ChipCustom(
+                                              selected: selected,
+                                              title: item.label,
+                                              onSelected: select,
+                                            ),
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 16.0),
+                                            onChanged: (val) =>
+                                                model.setLanguage(val),
+                                            isWrapped: true,
                                           ),
-                                          ChipCustom(
-                                            title: 'English',
-                                          ),
-                                          ChipCustom(
-                                            title: 'Português',
-                                          ),
-                                          ChipCustom(
-                                            title: 'Italiano',
-                                          ),
-                                          ChipCustom(
-                                            title: 'Français',
-                                          ),
-                                        ],
-                                      ),
-                                    ),
                                     const SizedBox(height: 16.0),
                                     Padding(
                                       padding: const EdgeInsets.symmetric(

@@ -3,18 +3,14 @@ import 'package:stacked_services/stacked_services.dart';
 
 import '../../../app/router.gr.dart';
 import '../../../app/locator.dart';
-import '../../../services/database_service.dart';
+import '../../../services/settings_service.dart';
 
 class HomeViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
-  final _hiveService = locator<HiveService>();
+  final _settingsService = locator<SettingsService>();
 
-  List<String> _languages;
-  int _index = 0;
-
-  int get index => _index;
-  List<String> get listLanguages => _languages;
-  String get languageSelected => _languages[_index];
+  int get indexLanguage => _settingsService.indexLanguage;
+  List<String> get listLanguages => _settingsService.listLanguages;
 
   Future navigateToMuseumDetails() async {
     await _navigationService.navigateTo(Routes.museumDetailsView);
@@ -28,19 +24,15 @@ class HomeViewModel extends BaseViewModel {
     await _navigationService.navigateTo(Routes.customizeTourView);
   }
 
-  Future<void> loadLanguages() async {
+  void loadLanguages() {
     setBusy(true);
-    _languages = List<String>.generate(5, (index) => 'Language $index');
-    final String language = _hiveService.getPrefs<String>('Languages');
-    _index =
-        _languages.indexWhere((element) => element.compareTo(language) == 0);
+    _settingsService.loadLanguages();
     setBusy(false);
   }
 
   void setLanguage(int index) {
     setBusy(true);
-    _index = index;
-    _hiveService.savePrefs<String>('Languages', _languages[_index]);
+    _settingsService.setLanguage(index);
     setBusy(false);
   }
 }

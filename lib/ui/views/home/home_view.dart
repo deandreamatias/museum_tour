@@ -95,7 +95,7 @@ class _HomeViewState extends State<HomeView> {
                     ? CircularProgressIndicator()
                     : ChipsChoice<int>.single(
                         wrapAlignment: WrapAlignment.center,
-                        value: model.index,
+                        value: model.indexLanguage,
                         options: ChipsChoiceOption.listFrom<int, String>(
                           source: model.listLanguages,
                           value: (i, v) => i,
