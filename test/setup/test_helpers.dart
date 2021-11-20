@@ -1,5 +1,4 @@
 import 'package:mockito/mockito.dart';
-import 'package:museum_tour/app/constants.dart';
 import 'package:museum_tour/app/locator.dart';
 import 'package:museum_tour/models/exposition.dart';
 import 'package:museum_tour/models/time.dart';

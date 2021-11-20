@@ -58,17 +58,24 @@ class ExpositionTourView extends StatelessWidget {
                                   child: SizedBox(
                                     height: 48.0,
                                     width: 56.0,
-                                    child: RaisedButton(
+                                    child: ElevatedButton(
                                       child: Icon(FeatherIcons.skipBack),
-                                      color: CustomColor.BACKGROUND,
-                                      onPressed: () => model.backExpo(),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(32.0),
-                                        side: BorderSide(
-                                          color: CustomColor.ACCENT,
+                                      style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                                CustomColor.BACKGROUND),
+                                        shape: MaterialStateProperty.all<
+                                            OutlinedBorder>(
+                                          const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(32.0)),
+                                            side: BorderSide(
+                                              color: CustomColor.ACCENT,
+                                            ),
+                                          ),
                                         ),
                                       ),
+                                      onPressed: () => model.backExpo(),
                                     ),
                                   ),
                                 ),
@@ -134,20 +141,31 @@ class ExpositionTourView extends StatelessWidget {
                                             SizedBox(
                                               height: 40.0,
                                               width: 56.0,
-                                              child: RaisedButton(
+                                              child: ElevatedButton(
                                                 child: Icon(
                                                     FeatherIcons.playCircle),
-                                                color: Colors.white,
-                                                onPressed: () {},
-                                                elevation: 0.0,
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          32.0),
-                                                  side: BorderSide(
-                                                    color: CustomColor.ACCENT,
+                                                style: ButtonStyle(
+                                                  backgroundColor:
+                                                      MaterialStateProperty.all<
+                                                          Color>(Colors.white),
+                                                  elevation:
+                                                      MaterialStateProperty.all<
+                                                          double>(0.0),
+                                                  shape: MaterialStateProperty
+                                                      .all<OutlinedBorder>(
+                                                    const RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  32.0)),
+                                                      side: BorderSide(
+                                                        color:
+                                                            CustomColor.ACCENT,
+                                                      ),
+                                                    ),
                                                   ),
                                                 ),
+                                                onPressed: () {},
                                               ),
                                             )
                                           ],

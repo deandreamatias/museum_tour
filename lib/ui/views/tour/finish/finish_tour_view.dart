@@ -122,7 +122,7 @@ class FinishTourView extends StatelessWidget {
                         ],
                       ),
                     ),
-                    FlatButton.icon(
+                    TextButton.icon(
                       onPressed: () async => await model.navigateToHome(),
                       icon: Icon(FeatherIcons.home),
                       label: Text('INICIO'),
