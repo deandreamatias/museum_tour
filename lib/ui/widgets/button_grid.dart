@@ -4,19 +4,19 @@ import '../../app/constants.dart';
 
 class ButtonGrid extends StatelessWidget {
   ButtonGrid({
-    this.title,
+    required this.title,
     this.onPressed,
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   final String title;
-  final Function() onPressed;
+  final Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(32.0),
-      onTap: () => onPressed(),
+      onTap: onPressed,
       child: Container(
         height: 120.0,
         width: 120.0,

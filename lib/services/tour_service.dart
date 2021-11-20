@@ -13,7 +13,7 @@ class TourService {
 
   List<Item> _items = [];
   int _indicator = 0;
-  Item _favItem;
+  Item? _favItem;
 
   /// Actual indicator position
   int get indicator => _indicator;
@@ -31,7 +31,7 @@ class TourService {
   bool get firstItem => _indicator == 1;
 
   /// Get fav item (with higher time spend)
-  Item get favItem => _favItem;
+  Item? get favItem => _favItem;
 
   /// Get selected item from list items
   Item getItem() {

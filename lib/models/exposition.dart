@@ -2,9 +2,9 @@ import 'dart:convert';
 
 class Exposition {
   Exposition({
-    this.id,
-    this.update,
-    this.items,
+    required this.id,
+    required this.update,
+    required this.items,
   });
 
   final String id;
@@ -31,12 +31,12 @@ class Exposition {
 
 class Item {
   Item({
-    this.id,
-    this.name,
-    this.date,
-    this.technique,
-    this.locale,
-    this.description,
+    required this.id,
+    required this.name,
+    required this.date,
+    required this.technique,
+    required this.locale,
+    required this.description,
   });
 
   final int id;

@@ -5,13 +5,13 @@ import 'package:museum_tour/app/constants.dart';
 class TopAppBar extends StatelessWidget {
   const TopAppBar({
     this.onPressed,
-    this.title,
+    required this.title,
     this.hasImageBackground = true,
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   final String title;
-  final Function() onPressed;
+  final Function()? onPressed;
   final bool hasImageBackground;
 
   @override
@@ -32,7 +32,7 @@ class TopAppBar extends StatelessWidget {
           leading: onPressed != null
               ? IconButton(
                   icon: const Icon(FeatherIcons.home),
-                  onPressed: () async => await onPressed(),
+                  onPressed: () async => await onPressed!(),
                   color:
                       hasImageBackground ? Colors.white : CustomColor.TEXT_HIGH,
                 )

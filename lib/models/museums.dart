@@ -2,9 +2,9 @@ import 'dart:convert';
 
 class Museums {
   Museums({
-    this.id,
-    this.update,
-    this.items,
+    required this.id,
+    required this.update,
+    required this.items,
   });
 
   final String id;
@@ -30,15 +30,15 @@ class Museums {
 
 class Museum {
   Museum({
-    this.id,
-    this.name,
-    this.telephone,
-    this.email,
-    this.websiteLink,
-    this.mapsLink,
-    this.province,
-    this.price,
-    this.schedules,
+    required this.id,
+    required this.name,
+    required this.telephone,
+    required this.email,
+    required this.websiteLink,
+    required this.mapsLink,
+    required this.province,
+    required this.price,
+    required this.schedules,
   });
 
   final int id;

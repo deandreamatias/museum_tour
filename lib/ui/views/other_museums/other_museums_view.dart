@@ -1,16 +1,14 @@
-import 'package:chips_choice/chips_choice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../app/constants.dart';
-import '../../../models/museums.dart';
 import '../../widgets/chip_custom.dart';
 import '../../widgets/top_app_bar.dart';
 import 'other_museums_viewmodel.dart';
 
 class OtherMuseumsView extends StatefulWidget {
-  const OtherMuseumsView({Key key}) : super(key: key);
+  const OtherMuseumsView({Key? key}) : super(key: key);
 
   @override
   _OtherMuseumsViewState createState() => _OtherMuseumsViewState();
@@ -54,33 +52,28 @@ class _OtherMuseumsViewState extends State<OtherMuseumsView> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 16.0),
                               child: Text(
-                                  'Seleccione otros museos en España para más detalles',
-                                  style: Theme.of(context).textTheme.subtitle1,
-                                  textAlign: TextAlign.center,
-                                  ),
+                                'Seleccione otros museos en España para más detalles',
+                                style: Theme.of(context).textTheme.subtitle1,
+                                textAlign: TextAlign.center,
+                              ),
                             ),
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 16.0),
                               child: model.isBusy
                                   ? CircularProgressIndicator()
-                                  : ChipsChoice<int>.single(
-                                      wrapAlignment: WrapAlignment.center,
-                                      value: model.index,
-                                      options: ChipsChoiceOption.listFrom<int,
-                                          Museum>(
-                                        source: model.museums,
-                                        value: (i, v) => i,
-                                        label: (i, v) => v.name,
-                                      ),
-                                      itemBuilder: (item, selected, select) =>
-                                          ChipCustom(
-                                        selected: selected,
-                                        title: item.label,
-                                        onSelected: select,
-                                      ),
-                                      onChanged: (val) => model.setMuseum(val),
-                                      isWrapped: true,
+                                  : Wrap(
+                                      children: [
+                                        ...model.museums
+                                            .map(
+                                              (item) => ChipCustom(
+                                                selected: false,
+                                                title: item.name,
+                                                onSelected: (value) => {},
+                                              ),
+                                            )
+                                            .toList()
+                                      ],
                                     ),
                             ),
                             SizedBox(height: 32.0)
@@ -112,7 +105,7 @@ class _OtherMuseumsViewState extends State<OtherMuseumsView> {
                     child: model.isBusy
                         ? CircularProgressIndicator()
                         : Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
                                 'Teléfono: ${model.museumSelected.telephone}',

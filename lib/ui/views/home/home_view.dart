@@ -1,4 +1,3 @@
-import 'package:chips_choice/chips_choice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:stacked/stacked.dart';
@@ -10,7 +9,7 @@ import '../../widgets/top_app_bar.dart';
 import 'home_viewmodel.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({Key key}) : super(key: key);
+  const HomeView({Key? key}) : super(key: key);
 
   @override
   _HomeViewState createState() => _HomeViewState();
@@ -93,21 +92,18 @@ class _HomeViewState extends State<HomeView> {
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: model.isBusy
                     ? CircularProgressIndicator()
-                    : ChipsChoice<int>.single(
-                        wrapAlignment: WrapAlignment.center,
-                        value: model.indexLanguage,
-                        options: ChipsChoiceOption.listFrom<int, String>(
-                          source: model.listLanguages,
-                          value: (i, v) => i,
-                          label: (i, v) => v,
-                        ),
-                        itemBuilder: (item, selected, select) => ChipCustom(
-                          selected: selected,
-                          title: item.label,
-                          onSelected: select,
-                        ),
-                        onChanged: (val) => model.setLanguage(val),
-                        isWrapped: true,
+                    : Wrap(
+                        children: [
+                          ...model.listLanguages
+                              .map(
+                                (item) => ChipCustom(
+                                  selected: false,
+                                  title: item,
+                                  onSelected: (value) => {},
+                                ),
+                              )
+                              .toList()
+                        ],
                       ),
               ),
             ),

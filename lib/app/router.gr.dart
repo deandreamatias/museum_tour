@@ -1,97 +1,118 @@
+// **************************************************************************
+// AutoRouteGenerator
+// **************************************************************************
+
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
 // AutoRouteGenerator
 // **************************************************************************
 
-// ignore_for_file: public_member_api_docs
+import 'package:auto_route/auto_route.dart' as _i8;
+import 'package:flutter/material.dart' as _i9;
 
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
+import '../ui/views/home/home_view.dart' as _i2;
+import '../ui/views/museum_details/museum_details_view.dart' as _i3;
+import '../ui/views/other_museums/other_museums_view.dart' as _i4;
+import '../ui/views/splash/splash_view.dart' as _i1;
+import '../ui/views/tour/customize/customize_tour_view.dart' as _i5;
+import '../ui/views/tour/exposition/exposition_tour_view.dart' as _i6;
+import '../ui/views/tour/finish/finish_tour_view.dart' as _i7;
 
-import '../ui/views/home/home_view.dart';
-import '../ui/views/museum_details/museum_details_view.dart';
-import '../ui/views/other_museums/other_museums_view.dart';
-import '../ui/views/splash/splash_view.dart';
-import '../ui/views/tour/customize/customize_tour_view.dart';
-import '../ui/views/tour/exposition/exposition_tour_view.dart';
-import '../ui/views/tour/finish/finish_tour_view.dart';
+class AppRouter extends _i8.RootStackRouter {
+  AppRouter([_i9.GlobalKey<_i9.NavigatorState>? navigatorKey])
+      : super(navigatorKey);
 
-class Routes {
-  static const String splashView = '/';
-  static const String homeView = '/home-view';
-  static const String museumDetailsView = '/museum-details-view';
-  static const String otherMuseumsView = '/other-museums-view';
-  static const String customizeTourView = '/customize-tour-view';
-  static const String expositionTourView = '/exposition-tour-view';
-  static const String finishTourView = '/finish-tour-view';
-  static const all = <String>{
-    splashView,
-    homeView,
-    museumDetailsView,
-    otherMuseumsView,
-    customizeTourView,
-    expositionTourView,
-    finishTourView,
+  @override
+  final Map<String, _i8.PageFactory> pagesMap = {
+    SplashRoute.name: (routeData) {
+      return _i8.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i1.SplashView());
+    },
+    HomeRoute.name: (routeData) {
+      return _i8.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i2.HomeView());
+    },
+    MuseumDetailsRoute.name: (routeData) {
+      return _i8.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i3.MuseumDetailsView());
+    },
+    OtherMuseumsRoute.name: (routeData) {
+      return _i8.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i4.OtherMuseumsView());
+    },
+    CustomizeTourRoute.name: (routeData) {
+      return _i8.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i5.CustomizeTourView());
+    },
+    ExpositionTourRoute.name: (routeData) {
+      return _i8.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i6.ExpositionTourView());
+    },
+    FinishTourRoute.name: (routeData) {
+      return _i8.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i7.FinishTourView());
+    }
   };
+
+  @override
+  List<_i8.RouteConfig> get routes => [
+        _i8.RouteConfig(SplashRoute.name, path: '/'),
+        _i8.RouteConfig(HomeRoute.name, path: '/home-view'),
+        _i8.RouteConfig(MuseumDetailsRoute.name, path: '/museum-details-view'),
+        _i8.RouteConfig(OtherMuseumsRoute.name, path: '/other-museums-view'),
+        _i8.RouteConfig(CustomizeTourRoute.name, path: '/customize-tour-view'),
+        _i8.RouteConfig(ExpositionTourRoute.name,
+            path: '/exposition-tour-view'),
+        _i8.RouteConfig(FinishTourRoute.name, path: '/finish-tour-view')
+      ];
 }
 
-class Router extends RouterBase {
-  @override
-  List<RouteDef> get routes => _routes;
-  final _routes = <RouteDef>[
-    RouteDef(Routes.splashView, page: SplashView),
-    RouteDef(Routes.homeView, page: HomeView),
-    RouteDef(Routes.museumDetailsView, page: MuseumDetailsView),
-    RouteDef(Routes.otherMuseumsView, page: OtherMuseumsView),
-    RouteDef(Routes.customizeTourView, page: CustomizeTourView),
-    RouteDef(Routes.expositionTourView, page: ExpositionTourView),
-    RouteDef(Routes.finishTourView, page: FinishTourView),
-  ];
-  @override
-  Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
-  final _pagesMap = <Type, AutoRouteFactory>{
-    SplashView: (data) {
-      return MaterialPageRoute<dynamic>(
-        builder: (context) => const SplashView(),
-        settings: data,
-      );
-    },
-    HomeView: (data) {
-      return MaterialPageRoute<dynamic>(
-        builder: (context) => const HomeView(),
-        settings: data,
-      );
-    },
-    MuseumDetailsView: (data) {
-      return MaterialPageRoute<dynamic>(
-        builder: (context) => const MuseumDetailsView(),
-        settings: data,
-      );
-    },
-    OtherMuseumsView: (data) {
-      return MaterialPageRoute<dynamic>(
-        builder: (context) => const OtherMuseumsView(),
-        settings: data,
-      );
-    },
-    CustomizeTourView: (data) {
-      return MaterialPageRoute<dynamic>(
-        builder: (context) => const CustomizeTourView(),
-        settings: data,
-      );
-    },
-    ExpositionTourView: (data) {
-      return MaterialPageRoute<dynamic>(
-        builder: (context) => const ExpositionTourView(),
-        settings: data,
-      );
-    },
-    FinishTourView: (data) {
-      return MaterialPageRoute<dynamic>(
-        builder: (context) => const FinishTourView(),
-        settings: data,
-      );
-    },
-  };
+/// generated route for [_i1.SplashView]
+class SplashRoute extends _i8.PageRouteInfo<void> {
+  const SplashRoute() : super(name, path: '/');
+
+  static const String name = 'SplashRoute';
+}
+
+/// generated route for [_i2.HomeView]
+class HomeRoute extends _i8.PageRouteInfo<void> {
+  const HomeRoute() : super(name, path: '/home-view');
+
+  static const String name = 'HomeRoute';
+}
+
+/// generated route for [_i3.MuseumDetailsView]
+class MuseumDetailsRoute extends _i8.PageRouteInfo<void> {
+  const MuseumDetailsRoute() : super(name, path: '/museum-details-view');
+
+  static const String name = 'MuseumDetailsRoute';
+}
+
+/// generated route for [_i4.OtherMuseumsView]
+class OtherMuseumsRoute extends _i8.PageRouteInfo<void> {
+  const OtherMuseumsRoute() : super(name, path: '/other-museums-view');
+
+  static const String name = 'OtherMuseumsRoute';
+}
+
+/// generated route for [_i5.CustomizeTourView]
+class CustomizeTourRoute extends _i8.PageRouteInfo<void> {
+  const CustomizeTourRoute() : super(name, path: '/customize-tour-view');
+
+  static const String name = 'CustomizeTourRoute';
+}
+
+/// generated route for [_i6.ExpositionTourView]
+class ExpositionTourRoute extends _i8.PageRouteInfo<void> {
+  const ExpositionTourRoute() : super(name, path: '/exposition-tour-view');
+
+  static const String name = 'ExpositionTourRoute';
+}
+
+/// generated route for [_i7.FinishTourView]
+class FinishTourRoute extends _i8.PageRouteInfo<void> {
+  const FinishTourRoute() : super(name, path: '/finish-tour-view');
+
+  static const String name = 'FinishTourRoute';
 }

@@ -11,9 +11,9 @@ abstract class LocalStorageService {
 
   Future<bool> init();
 
-  Future<bool> config({String box});
+  Future<bool> config({required String box});
 
-  T getData<T>(String key);
+  T? getData<T>(String key);
 
   Future<bool> saveData<T>(String key, T value);
 
@@ -25,13 +25,14 @@ class HiveService implements LocalStorageService {
   HiveService(this.directoryRepository);
 
   final DirectoryService directoryRepository;
-  Box _box;
+  late Box _box;
   bool _isInitiated = false;
 
   /// If service is initiated and configured, can use service
-  bool get canUseService => _isInitiated && _box != null &&_box.isOpen  ;
+  bool get canUseService => _isInitiated && _box.isOpen;
 
   @override
+
   /// Init local storage with [directoryRepository] path
   Future<bool> init() async {
     try {
@@ -48,7 +49,7 @@ class HiveService implements LocalStorageService {
   @override
 
   /// Config one box to local storage, with [box] name
-  Future<bool> config({@required String box}) async {
+  Future<bool> config({required String box}) async {
     try {
       _box = await Hive.openBox<String>(box);
       return _box.isOpen;
@@ -60,9 +61,9 @@ class HiveService implements LocalStorageService {
   @override
 
   /// Get data with [key] from local storage
-  T getData<T>(String key) {
+  T? getData<T>(String key) {
     try {
-      return _box.get(key) as T;
+      return _box.get(key);
     } catch (e) {
       throw UnimplementedError('Error to get data: $e');
     }
@@ -81,6 +82,7 @@ class HiveService implements LocalStorageService {
   }
 
   @override
+
   /// Deletes all open boxes
   Future<void> clearAllData() async {
     await Hive.deleteFromDisk();

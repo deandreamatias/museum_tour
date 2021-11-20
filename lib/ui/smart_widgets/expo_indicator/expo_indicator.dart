@@ -7,7 +7,7 @@ import 'expo_indicator_viewmodel.dart';
 
 class ExpoIndicator extends StatelessWidget {
   const ExpoIndicator({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

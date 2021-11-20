@@ -4,38 +4,38 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
-import 'package:get_it/get_it.dart';
-import 'package:injectable/get_it_helper.dart';
-import 'package:stacked_services/stacked_services.dart';
+import 'package:get_it/get_it.dart' as _i1;
+import 'package:injectable/injectable.dart' as _i2;
+import 'package:stacked_services/stacked_services.dart' as _i3;
 
-import '../services/directory_service.dart';
-import '../services/local_storage_service.dart';
-import '../services/media_services.dart';
-import '../services/settings_service.dart';
-import '../services/third_party_services_module.dart';
-import '../services/time_service.dart';
-import '../services/tour_service.dart';
+import '../services/directory_service.dart' as _i4;
+import '../services/local_storage_service.dart' as _i5;
+import '../services/media_services.dart' as _i6;
+import '../services/settings_service.dart' as _i7;
+import '../services/third_party_services_module.dart' as _i10;
+import '../services/time_service.dart' as _i8;
+import '../services/tour_service.dart'
+    as _i9; // ignore_for_file: unnecessary_lambdas
 
-/// adds generated dependencies
-/// to the provided [GetIt] instance
-
-void $initGetIt(GetIt g, {String environment}) {
-  final gh = GetItHelper(g, environment);
+// ignore_for_file: lines_longer_than_80_chars
+/// initializes the registration of provided dependencies inside of [GetIt]
+_i1.GetIt $initGetIt(_i1.GetIt get,
+    {String? environment, _i2.EnvironmentFilter? environmentFilter}) {
+  final gh = _i2.GetItHelper(get, environment, environmentFilter);
   final thirdPartyServicesModule = _$ThirdPartyServicesModule();
-  gh.lazySingleton<DialogService>(() => thirdPartyServicesModule.dialogService);
-  gh.lazySingleton<DirectoryService>(() => PathProviderService());
-  gh.lazySingleton<HiveService>(() => HiveService(g<DirectoryService>()));
-  gh.lazySingleton<MediaService>(() => MediaService());
-  gh.lazySingleton<NavigationService>(
-      () => thirdPartyServicesModule.navigationService);
-  gh.lazySingleton<SettingsService>(() => SettingsService());
-  gh.lazySingleton<TimeService>(() => TimeService());
-  gh.lazySingleton<TourService>(() => TourService());
+  gh.lazySingleton<_i3.DialogService>(
+      () => thirdPartyServicesModule.dialogService);
+  gh.lazySingleton<_i4.DirectoryService>(() => _i4.PathProviderService());
+  gh.lazySingleton<_i5.HiveService>(
+      () => _i5.HiveService(get<_i4.DirectoryService>()));
+  gh.lazySingleton<_i6.MediaService>(() => _i6.MediaService());
+  gh.lazySingleton<_i7.SettingsService>(() => _i7.SettingsService());
+  gh.lazySingleton<_i8.TimeService>(() => _i8.TimeService());
+  gh.lazySingleton<_i9.TourService>(() => _i9.TourService());
+  return get;
 }
 
-class _$ThirdPartyServicesModule extends ThirdPartyServicesModule {
+class _$ThirdPartyServicesModule extends _i10.ThirdPartyServicesModule {
   @override
-  DialogService get dialogService => DialogService();
-  @override
-  NavigationService get navigationService => NavigationService();
+  _i3.DialogService get dialogService => _i3.DialogService();
 }

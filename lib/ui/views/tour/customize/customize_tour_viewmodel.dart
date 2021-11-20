@@ -1,18 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 
 import '../../../../app/locator.dart';
 import '../../../../app/router.gr.dart';
+import '../../../../main.dart';
 import '../../../../services/settings_service.dart';
 import '../../../../services/tour_service.dart';
 
 class CustomizeTourViewModel extends BaseViewModel {
-  final _navigationService = locator<NavigationService>();
   final _tourService = locator<TourService>();
   final _settingsService = locator<SettingsService>();
 
-  String _name;
+  String _name = '';
   bool _autoplay = false;
   TextEditingController _textEditingController =
       TextEditingController(text: '');
@@ -25,14 +24,14 @@ class CustomizeTourViewModel extends BaseViewModel {
 
   Future navigateToHome() async {
     resetTour();
-    await _navigationService.navigateTo(Routes.homeView);
+    await appRouter.push(HomeRoute());
   }
 
   Future navigateToExpositionTour() async {
     _tourService.startTour();
     _setName();
     _textEditingController.clear();
-    await _navigationService.navigateTo(Routes.expositionTourView);
+    await appRouter.push(ExpositionTourRoute());
   }
 
   Future<bool> resetTour() {

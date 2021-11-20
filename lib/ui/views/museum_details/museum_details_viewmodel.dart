@@ -1,23 +1,22 @@
+import 'package:museum_tour/app/router.dart';
+import 'package:museum_tour/main.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../app/locator.dart';
-import '../../../app/router.gr.dart';
 import '../../../models/museums.dart';
 import '../../../services/media_services.dart';
 
 class MuseumDetailsViewModel extends BaseViewModel {
-  final _navigationService = locator<NavigationService>();
   final _mediaService = locator<MediaService>();
 
-  Museum _museum;
+  late Museum _museum;
 
   Museum get museum => _museum;
   String get museumContact => _museum.telephone + '\n' + _museum.email;
 
   Future<void> navigateToHome() async {
-    await _navigationService.navigateTo(Routes.homeView);
+    await appRouter.push(HomeRoute());
   }
 
   Future<void> loadMuseumInfo() async {

@@ -8,7 +8,7 @@ import 'package:stacked/stacked.dart';
 import 'exposition_tour_viewmodel.dart';
 
 class ExpositionTourView extends StatelessWidget {
-  const ExpositionTourView({Key key}) : super(key: key);
+  const ExpositionTourView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
@@ -47,7 +47,7 @@ class ExpositionTourView extends StatelessWidget {
                               Align(
                                 alignment: Alignment.topCenter,
                                 child: TopAppBar(
-                                  title: model.item?.name ?? 'Cargando',
+                                  title: model.item.name,
                                   onPressed: () => model.navigateToHome(),
                                 ),
                               ),

@@ -8,7 +8,7 @@ import '../../../widgets/top_app_bar.dart';
 import 'finish_tour_viewmodel.dart';
 
 class FinishTourView extends StatelessWidget {
-  const FinishTourView({Key key}) : super(key: key);
+  const FinishTourView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.nonReactive(
@@ -53,10 +53,10 @@ class FinishTourView extends StatelessWidget {
                             margin: const EdgeInsets.all(8.0),
                             child: Center(
                               child: Text(
-                                model.expoFavItem.name,
+                                model.expoFavItem?.name ?? '',
                                 style: Theme.of(context)
                                     .textTheme
-                                    .headline5
+                                    .headline5!
                                     .copyWith(color: Colors.white),
                               ),
                             ),

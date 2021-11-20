@@ -19,12 +19,12 @@ class TimeService {
   /// Save time with [expoId] in list and reset time counter.
   /// If [expoId] exist, will add time to it
   void saveTime(int expoId, {bool restartTime = false}) {
-    int _indexExpo;
+    int _indexExpo = -1;
 
     if (_listTime.isNotEmpty)
       _indexExpo = _listTime.indexWhere((item) => item.expoId == expoId);
 
-    if (_indexExpo == null || _indexExpo == -1) {
+    if (_indexExpo == -1) {
       _listTime.add(Time(
         expoId: expoId,
         time: _stopwatch.elapsedMilliseconds,

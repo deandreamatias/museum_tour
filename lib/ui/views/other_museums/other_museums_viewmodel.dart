@@ -1,17 +1,16 @@
+import 'package:museum_tour/app/router.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../app/locator.dart';
-import '../../../app/router.gr.dart';
+import '../../../main.dart';
 import '../../../models/museums.dart';
 import '../../../services/media_services.dart';
 
 class OtherMuseumsViewModel extends BaseViewModel {
-  final _navigationService = locator<NavigationService>();
   final _mediaService = locator<MediaService>();
 
-  Museums _museums;
+  late Museums _museums;
   int _index = 0;
 
   int get index => _index;
@@ -19,7 +18,7 @@ class OtherMuseumsViewModel extends BaseViewModel {
   Museum get museumSelected => _museums.items[_index];
 
   Future<void> navigateToHome() async {
-    await _navigationService.navigateTo(Routes.homeView);
+    await appRouter.push(HomeRoute());
   }
 
   Future<void> loadMuseumsInfo() async {

@@ -9,7 +9,7 @@ import '../../widgets/top_app_bar.dart';
 import 'museum_details_viewmodel.dart';
 
 class MuseumDetailsView extends StatefulWidget {
-  const MuseumDetailsView({Key key}) : super(key: key);
+  const MuseumDetailsView({Key? key}) : super(key: key);
 
   @override
   _MuseumDetailsViewState createState() => _MuseumDetailsViewState();

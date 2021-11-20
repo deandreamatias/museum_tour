@@ -1,4 +1,3 @@
-import 'package:chips_choice/chips_choice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:museum_tour/ui/smart_widgets/expo_indicator/expo_indicator.dart';
@@ -10,7 +9,7 @@ import '../../../widgets/top_app_bar.dart';
 import 'customize_tour_viewmodel.dart';
 
 class CustomizeTourView extends StatelessWidget {
-  const CustomizeTourView({Key key}) : super(key: key);
+  const CustomizeTourView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -76,26 +75,18 @@ class CustomizeTourView extends StatelessWidget {
                                     ),
                                     model.isBusy
                                         ? CircularProgressIndicator()
-                                        : ChipsChoice<int>.single(
-                                            value: model.indexLanguage,
-                                            options: ChipsChoiceOption.listFrom<
-                                                int, String>(
-                                              source: model.listLanguages,
-                                              value: (i, v) => i,
-                                              label: (i, v) => v,
-                                            ),
-                                            itemBuilder:
-                                                (item, selected, select) =>
-                                                    ChipCustom(
-                                              selected: selected,
-                                              title: item.label,
-                                              onSelected: select,
-                                            ),
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 16.0),
-                                            onChanged: (val) =>
-                                                model.setLanguage(val),
-                                            isWrapped: true,
+                                        : Wrap(
+                                            children: [
+                                              ...model.listLanguages
+                                                  .map(
+                                                    (item) => ChipCustom(
+                                                      selected: false,
+                                                      title: item,
+                                                      onSelected: (value) => {},
+                                                    ),
+                                                  )
+                                                  .toList()
+                                            ],
                                           ),
                                     const SizedBox(height: 16.0),
                                     Padding(
@@ -134,7 +125,7 @@ class CustomizeTourView extends StatelessWidget {
                                       value: model.autoplay,
                                       checkColor: CustomColor.TEXT_MEDIUM,
                                       activeColor: CustomColor.ACCENT,
-                                      onChanged: (bool value) =>
+                                      onChanged: (bool? value) =>
                                           model.setAutoplay,
                                       controlAffinity:
                                           ListTileControlAffinity.leading,

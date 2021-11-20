@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:stacked_services/stacked_services.dart';
 
 import 'app/locator.dart';
-import 'app/router.gr.dart' as router;
-import 'ui/views/splash/splash_view.dart';
+import 'app/router.dart';
+
+final appRouter = AppRouter();
 
 void main() {
   setupLocator();
@@ -11,16 +11,15 @@ void main() {
 }
 
 class App extends StatelessWidget {
-  const App({Key key}) : super(key: key);
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Museum tour',
       theme: ThemeData(fontFamily: 'Quicksand'),
-      home: SplashView(),
-      onGenerateRoute: router.Router().onGenerateRoute,
-      navigatorKey: locator<NavigationService>().navigatorKey,
+      routerDelegate: appRouter.delegate(),
+      routeInformationParser: appRouter.defaultRouteParser(),
     );
   }
 }

@@ -4,7 +4,7 @@ import 'package:museum_tour/ui/views/splash/splash_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 
 class SplashView extends StatelessWidget {
-  const SplashView({Key key}) : super(key: key);
+  const SplashView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -8,14 +8,14 @@ import 'local_storage_service.dart';
 class SettingsService {
   final _hiveService = locator<HiveService>();
 
-  List<String> _languages;
+  List<String> _languages = [];
   int _indexLanguage = 0;
 
   int get indexLanguage => _indexLanguage;
   List<String> get listLanguages => _languages;
 
   bool loadAutoplay() {
-    return _hiveService.getData<bool>(DbKeys.AUTOPLAY_KEY);
+    return _hiveService.getData<bool>(DbKeys.AUTOPLAY_KEY) ?? false;
   }
 
   void setAutoplay(bool autoplay) {
@@ -23,7 +23,7 @@ class SettingsService {
   }
 
   String loadName() {
-    return _hiveService.getData<String>(DbKeys.NAME_KEY);
+    return _hiveService.getData<String>(DbKeys.NAME_KEY) ?? '';
   }
 
   void setName({String name = 'Visitante'}) {
@@ -32,7 +32,7 @@ class SettingsService {
 
   void loadLanguages() {
     _languages = List<String>.generate(5, (index) => 'Language $index');
-    final String language = _hiveService.getData<String>(DbKeys.LANGUAGE_KEY);
+    final String? language = _hiveService.getData<String>(DbKeys.LANGUAGE_KEY);
     if (language != null) {
       _indexLanguage =
           _languages.indexWhere((element) => element.compareTo(language) == 0);

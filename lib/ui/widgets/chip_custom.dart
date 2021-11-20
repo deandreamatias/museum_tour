@@ -4,16 +4,16 @@ import '../../app/constants.dart';
 
 class ChipCustom extends StatelessWidget {
   const ChipCustom({
-    this.title,
+    required this.title,
     this.selected = false,
     this.backgroundColor = Colors.white,
     this.onSelected,
-    Key key,
+    Key? key,
   }) : super(key: key);
   final String title;
   final bool selected;
   final Color backgroundColor;
-  final Function(bool) onSelected;
+  final Function(bool)? onSelected;
 
   @override
   Widget build(BuildContext context) {

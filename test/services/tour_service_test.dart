@@ -112,7 +112,7 @@ void main() {
         service.getExpoItems();
         service.finishExpo(getFavItem: true);
 
-        expect(service.favItem.id, 1);
+        expect(service.favItem?.id, 1);
       });
     });
   });

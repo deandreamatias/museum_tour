@@ -26,13 +26,22 @@ class TimeServiceMock extends Mock implements TimeService {
 
 class TourServiceMock extends Mock implements TourService {
   List<Item> _items = [];
-  Item _favItem;
+  Item? _favItem;
 
   List<Item> get items => _items;
-  Item get favItem => _favItem;
+  Item? get favItem => _favItem;
 
   void getItems() {
-    _items.addAll(List<Item>.generate(10, (index) => Item(id: index)));
+    _items.addAll(List<Item>.generate(
+        10,
+        (index) => Item(
+              id: index,
+              date: '',
+              description: '',
+              locale: '',
+              name: '',
+              technique: '',
+            )));
   }
 
   void getTime() {
@@ -113,7 +122,8 @@ DirectoryService getAndRegisterDirectoryServiceMock({
   return service;
 }
 
-HiveService getAndRegisterHiveServiceMock({DirectoryService directory}) {
+HiveService getAndRegisterHiveServiceMock(
+    {required DirectoryService directory}) {
   _removeRegistrationIfExists<HiveService>();
   final service = HiveServiceMock(directory);
   locator.registerSingleton<HiveService>(service);
@@ -133,7 +143,8 @@ void registerServices() {
   getAndRegisterTimeServiceMock();
   getAndRegisterTourServiceMock();
   getAndRegisterDirectoryServiceMock();
-  getAndRegisterHiveServiceMock();
+  getAndRegisterHiveServiceMock(
+      directory: getAndRegisterDirectoryServiceMock());
   getAndRegisterSettingsServiceMock();
 }
 
@@ -147,7 +158,7 @@ void unregisterServices() {
   locator.unregister<SettingsService>();
 }
 
-void _removeRegistrationIfExists<T>() {
+void _removeRegistrationIfExists<T extends Object>() {
   if (locator.isRegistered<T>()) {
     locator.unregister<T>();
   }

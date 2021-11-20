@@ -53,7 +53,7 @@ void main() {
             HiveService(getAndRegisterDirectoryServiceMock(staticPath: false));
 
         try {
-          final result = await service.config(box: null);
+          final result = await service.config(box: '');
           expect(result, false);
         } catch (e) {
           expect(e, isUnimplementedError);
@@ -81,7 +81,7 @@ void main() {
         await service.init();
         await service.config(box: TestConstants.BOX);
         await service.saveData<String>(TestConstants.TEST_KEY, test);
-        final result = service.getData<String>(TestConstants.TEST_KEY);
+        final result = service.getData<String>(TestConstants.TEST_KEY) ?? '';
 
         expect(result.compareTo(test), 0);
       });
@@ -107,7 +107,7 @@ void main() {
         await service.config(box: TestConstants.BOX);
         final result =
             await service.saveData<String>(TestConstants.TEST_KEY, test);
-        final result2 = service.getData<String>(TestConstants.TEST_KEY);
+        final result2 = service.getData<String>(TestConstants.TEST_KEY) ?? '';
 
         expect(result, true);
         expect(result2.compareTo(test), 0);

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class DialogMuseum extends StatelessWidget {
   const DialogMuseum({
-    Key key,
-    this.title,
-    this.content,
+    Key? key,
+    required this.title,
+    required this.content,
   }) : super(key: key);
 
   final String title;
