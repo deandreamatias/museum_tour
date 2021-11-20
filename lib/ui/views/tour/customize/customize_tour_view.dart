@@ -58,7 +58,8 @@ class CustomizeTourView extends StatelessWidget {
                                       child: TextField(
                                         keyboardType: TextInputType.name,
                                         textInputAction: TextInputAction.done,
-                                        textCapitalization: TextCapitalization.words,
+                                        textCapitalization:
+                                            TextCapitalization.words,
                                         controller: model.textEditingController,
                                         decoration: InputDecoration(
                                           labelText: 'Tu nombre',
@@ -71,7 +72,7 @@ class CustomizeTourView extends StatelessWidget {
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 16.0),
                                       child: Text(
-                                          'Idioma de textos e audios guía'),
+                                          'Idioma de textos y audios guía'),
                                     ),
                                     model.isBusy
                                         ? CircularProgressIndicator()
@@ -130,10 +131,11 @@ class CustomizeTourView extends StatelessWidget {
                                     ),
                                     const SizedBox(height: 16.0),
                                     CheckboxListTile(
-                                      value: false,
+                                      value: model.autoplay,
                                       checkColor: CustomColor.TEXT_MEDIUM,
                                       activeColor: CustomColor.ACCENT,
-                                      onChanged: (bool value) {},
+                                      onChanged: (bool value) =>
+                                          model.setAutoplay,
                                       controlAffinity:
                                           ListTileControlAffinity.leading,
                                       title: Text(

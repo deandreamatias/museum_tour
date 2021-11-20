@@ -1,10 +1,12 @@
 import 'package:mockito/mockito.dart';
+import 'package:museum_tour/app/constants.dart';
 import 'package:museum_tour/app/locator.dart';
 import 'package:museum_tour/models/exposition.dart';
 import 'package:museum_tour/models/time.dart';
 import 'package:museum_tour/services/local_storage_service.dart';
 import 'package:museum_tour/services/directory_service.dart';
 import 'package:museum_tour/services/media_services.dart';
+import 'package:museum_tour/services/settings_service.dart';
 import 'package:museum_tour/services/time_service.dart';
 import 'package:museum_tour/services/tour_service.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -46,6 +48,8 @@ class HiveServiceMock extends Mock implements HiveService {
 
   final DirectoryService directoryRepository;
 }
+
+class SettingsServiceMock extends Mock implements SettingsService {}
 
 NavigationService getAndRegisterNavigationServiceMock() {
   _removeRegistrationIfExists<NavigationService>();
@@ -117,6 +121,13 @@ HiveService getAndRegisterHiveServiceMock({DirectoryService directory}) {
   return service;
 }
 
+SettingsService getAndRegisterSettingsServiceMock() {
+  _removeRegistrationIfExists<SettingsService>();
+  final service = SettingsServiceMock();
+  locator.registerSingleton<SettingsService>(service);
+  return service;
+}
+
 void registerServices() {
   getAndRegisterNavigationServiceMock();
   getAndRegisterMediaServiceMock();
@@ -124,6 +135,7 @@ void registerServices() {
   getAndRegisterTourServiceMock();
   getAndRegisterDirectoryServiceMock();
   getAndRegisterHiveServiceMock();
+  getAndRegisterSettingsServiceMock();
 }
 
 void unregisterServices() {
@@ -133,6 +145,7 @@ void unregisterServices() {
   locator.unregister<TourService>();
   locator.unregister<DirectoryService>();
   locator.unregister<HiveService>();
+  locator.unregister<SettingsService>();
 }
 
 void _removeRegistrationIfExists<T>() {

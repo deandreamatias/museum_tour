@@ -13,7 +13,7 @@ class CustomizeTourViewModel extends BaseViewModel {
   final _settingsService = locator<SettingsService>();
 
   String _name;
-  bool _autoplay;
+  bool _autoplay = false;
   TextEditingController _textEditingController =
       TextEditingController(text: '');
 
@@ -56,6 +56,7 @@ class CustomizeTourViewModel extends BaseViewModel {
 
   void setAutoplay(bool autoplay) {
     setBusy(true);
+    _autoplay = autoplay;
     _settingsService.setAutoplay(autoplay);
     setBusy(false);
   }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import 'app/locator.dart';
-import 'app/router.gr.dart';
+import 'app/router.gr.dart' as router;
 import 'ui/views/splash/splash_view.dart';
 
 void main() {
@@ -19,7 +19,7 @@ class App extends StatelessWidget {
       title: 'Museum tour',
       theme: ThemeData(fontFamily: 'Quicksand'),
       home: SplashView(),
-      onGenerateRoute: Router().onGenerateRoute,
+      onGenerateRoute: router.Router().onGenerateRoute,
       navigatorKey: locator<NavigationService>().navigatorKey,
     );
   }
