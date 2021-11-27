@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:museum_tour/app/constants.dart';
-import 'package:museum_tour/ui/views/splash/splash_viewmodel.dart';
 import 'package:stacked/stacked.dart';
+
+import '../../../app/constants.dart';
+import 'splash_viewmodel.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({Key? key}) : super(key: key);

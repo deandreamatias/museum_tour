@@ -12,14 +12,15 @@ class Assets {
   static const String INFO_MUSEUM = 'assets/images/info_museum.jpg';
   static const String SCULPTURE = 'assets/images/sculpture.jpg';
   static const String EXPOSITION_PATH = 'assets/json/exposition.json';
+  static const String LANGUAGES_PATH = 'assets/json/languages.json';
   static const String MUSEUMS_PATH = 'assets/json/museums.json';
   static const String MAIN_MUSEUM_PATH = 'assets/json/main_museum.json';
 }
 
 class DbKeys {
-  static const String PREFS_BOX = 'preferences'; 
-  static const String LANGUAGE_KEY = 'language'; 
-  static const String NAME_KEY = 'name'; 
-  static const String TEXT_SIZE_KEY = 'text_size'; 
-  static const String AUTOPLAY_KEY = 'autoplay'; 
+  static const String PREFS_BOX = 'preferences';
+  static const String LANGUAGE_KEY = 'language';
+  static const String NAME_KEY = 'name';
+  static const String TEXT_SIZE_KEY = 'text_size';
+  static const String AUTOPLAY_KEY = 'autoplay';
 }

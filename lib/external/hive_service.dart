@@ -4,24 +4,8 @@ import 'package:injectable/injectable.dart';
 
 import 'directory_service.dart';
 
-abstract class LocalStorageService {
-  LocalStorageService(this.directoryRepository);
-
-  final DirectoryService directoryRepository;
-
-  Future<bool> init();
-
-  Future<bool> config({required String box});
-
-  T? getData<T>(String key);
-
-  Future<bool> saveData<T>(String key, T value);
-
-  void clearAllData();
-}
-
 @lazySingleton
-class HiveService implements LocalStorageService {
+class HiveService {
   HiveService(this.directoryRepository);
 
   final DirectoryService directoryRepository;
@@ -30,8 +14,6 @@ class HiveService implements LocalStorageService {
 
   /// If service is initiated and configured, can use service
   bool get canUseService => _isInitiated && _box.isOpen;
-
-  @override
 
   /// Init local storage with [directoryRepository] path
   Future<bool> init() async {
@@ -46,19 +28,15 @@ class HiveService implements LocalStorageService {
     return _isInitiated;
   }
 
-  @override
-
   /// Config one box to local storage, with [box] name
   Future<bool> config({required String box}) async {
     try {
-      _box = await Hive.openBox<String>(box);
+      _box = await Hive.openBox(box);
       return _box.isOpen;
     } catch (e) {
       throw UnimplementedError('Error to config box: $e');
     }
   }
-
-  @override
 
   /// Get data with [key] from local storage
   T? getData<T>(String key) {
@@ -69,8 +47,6 @@ class HiveService implements LocalStorageService {
     }
   }
 
-  @override
-
   /// Save data [key] with [value] in local storage
   Future<bool> saveData<T>(String key, T value) async {
     try {
@@ -80,8 +56,6 @@ class HiveService implements LocalStorageService {
       throw UnimplementedError('Error to save data: $e');
     }
   }
-
-  @override
 
   /// Deletes all open boxes
   Future<void> clearAllData() async {

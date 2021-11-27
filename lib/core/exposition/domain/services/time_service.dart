@@ -4,11 +4,12 @@ import '../models/time.dart';
 
 @lazySingleton
 class TimeService {
-  /// List to save time from each item
   List<Time> _listTime = <Time>[];
   Stopwatch _stopwatch = Stopwatch();
 
   Stopwatch get stopwatch => _stopwatch;
+
+  /// List to save time from each item
   List<Time> get listTime => _listTime;
 
   /// Start time counter

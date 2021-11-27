@@ -1,19 +1,20 @@
 import 'package:injectable/injectable.dart';
+import 'package:museum_tour/core/exposition/domain/models/exposition.dart';
+import 'package:museum_tour/core/exposition/domain/models/exposition_item.dart';
+import 'package:museum_tour/core/exposition/domain/use_cases/get_exposition_use_case.dart';
 
-import '../app/locator.dart';
-import '../models/exposition.dart';
+import '../../../../app/locator.dart';
 import '../models/time.dart';
-import 'media_services.dart';
 import 'time_service.dart';
 
 @lazySingleton
 class TourService {
-  final _mediaService = locator<MediaService>();
+  final _getExpositionUseCase = locator<GetExpositionUseCase>();
   final _timeService = locator<TimeService>();
 
-  List<Item> _items = [];
+  List<ExpositionItem> _items = [];
   int _indicator = 0;
-  Item? _favItem;
+  ExpositionItem? _favItem;
 
   /// Actual indicator position
   int get indicator => _indicator;
@@ -31,10 +32,10 @@ class TourService {
   bool get firstItem => _indicator == 1;
 
   /// Get fav item (with higher time spend)
-  Item? get favItem => _favItem;
+  ExpositionItem? get favItem => _favItem;
 
   /// Get selected item from list items
-  Item getItem() {
+  ExpositionItem getItem() {
     if (_indicator > 0) {
       return _items[_indicator - 1];
     }
@@ -49,7 +50,7 @@ class TourService {
 
   /// Get items list from database and start time counter.
   Future<void> getExpoItems() async {
-    final Exposition _exposition = await _mediaService.getExpositionInfo();
+    final Exposition _exposition = await _getExpositionUseCase();
     _items = _exposition.items;
   }
 

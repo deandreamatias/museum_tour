@@ -2,25 +2,33 @@ import 'package:flutter/cupertino.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../../app/locator.dart';
-import '../../../../app/router.gr.dart';
+import '../../../../app/router.dart';
+import '../../../../core/exposition/domain/models/languages.dart';
+import '../../../../core/exposition/domain/models/settings.dart';
+import '../../../../core/exposition/domain/services/tour_service.dart';
+import '../../../../core/exposition/domain/use_cases/get_languages_use_case.dart';
+import '../../../../core/exposition/domain/use_cases/get_settings_use_case.dart';
+import '../../../../core/exposition/domain/use_cases/save_settings_use_case.dart';
 import '../../../../main.dart';
-import '../../../../services/settings_service.dart';
-import '../../../../services/tour_service.dart';
 
 class CustomizeTourViewModel extends BaseViewModel {
+  final _getSettingsUseCase = locator<GetSettingsUseCase>();
+  final _getLanguagesUseCase = locator<GetLanguagesUseCase>();
+  final _saveSettingsUseCase = locator<SaveSettingsUseCase>();
   final _tourService = locator<TourService>();
-  final _settingsService = locator<SettingsService>();
 
+  List<String> get listLanguages => _languages.languages;
+  String get language => _language;
+  String get name => _name;
+  bool get autoplay => _autoplay;
+  TextEditingController get textEditingController => _textEditingController;
+
+  Languages _languages = Languages();
+  String _language = '';
   String _name = '';
   bool _autoplay = false;
   TextEditingController _textEditingController =
       TextEditingController(text: '');
-
-  int get indexLanguage => _settingsService.indexLanguage;
-  List<String> get listLanguages => _settingsService.listLanguages;
-  String get name => _name;
-  bool get autoplay => _autoplay;
-  TextEditingController get textEditingController => _textEditingController;
 
   Future navigateToHome() async {
     resetTour();
@@ -29,7 +37,15 @@ class CustomizeTourViewModel extends BaseViewModel {
 
   Future navigateToExpositionTour() async {
     _tourService.startTour();
-    _setName();
+    _saveSettingsUseCase(
+      Settings(
+        language: _language,
+        autoplay: _autoplay,
+        name: _textEditingController.text.isNotEmpty
+            ? _textEditingController.text
+            : '',
+      ),
+    );
     _textEditingController.clear();
     await appRouter.push(ExpositionTourRoute());
   }
@@ -39,32 +55,13 @@ class CustomizeTourViewModel extends BaseViewModel {
     return Future.value(_tourService.finishExpo());
   }
 
-  void loadSettings() {
+  void initialLoad() async {
     setBusy(true);
-    _settingsService.loadLanguages();
-    _name = _settingsService.loadName();
-    _autoplay = _settingsService.loadAutoplay();
-    setBusy(false);
-  }
-
-  void setLanguage(int index) {
-    setBusy(true);
-    _settingsService.setLanguage(index);
-    setBusy(false);
-  }
-
-  void setAutoplay(bool autoplay) {
-    setBusy(true);
-    _autoplay = autoplay;
-    _settingsService.setAutoplay(autoplay);
-    setBusy(false);
-  }
-
-  void _setName() {
-    setBusy(true);
-    _textEditingController.text.isNotEmpty
-        ? _settingsService.setName(name: _textEditingController.text)
-        : _settingsService.setName();
+    _languages = await _getLanguagesUseCase();
+    final settings = _getSettingsUseCase();
+    _autoplay = settings.autoplay;
+    _name = settings.name;
+    _language = settings.language;
     setBusy(false);
   }
 }

@@ -1,14 +1,15 @@
-import 'package:museum_tour/app/router.dart';
 import 'package:stacked/stacked.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../app/locator.dart';
+import '../../../app/router.dart';
+import '../../../core/museum/domain/models/museum.dart';
+import '../../../core/museum/domain/models/museums.dart';
+import '../../../core/museum/domain/use_cases/get_museums_use_case.dart';
 import '../../../main.dart';
-import '../../../models/museums.dart';
-import '../../../services/media_services.dart';
 
 class OtherMuseumsViewModel extends BaseViewModel {
-  final _mediaService = locator<MediaService>();
+  final _getMuseumsUseCase = locator<GetMuseumsUseCase>();
 
   late Museums _museums;
   int _index = 0;
@@ -23,7 +24,7 @@ class OtherMuseumsViewModel extends BaseViewModel {
 
   Future<void> loadMuseumsInfo() async {
     setBusy(true);
-    _museums = await _mediaService.getOtherMuseums();
+    _museums = await _getMuseumsUseCase();
     setBusy(false);
   }
 
@@ -34,14 +35,10 @@ class OtherMuseumsViewModel extends BaseViewModel {
   }
 
   Future<void> openLink({bool isWebsite = true}) async {
-    if (_museums != null) {
-      if (await canLaunch(_museums.items[_index].mapsLink)) {
-        await launch(_museums.items[_index].mapsLink);
-      } else {
-        throw 'Map can\'t launch. Error to open the map';
-      }
+    if (await canLaunch(_museums.items[_index].mapsLink)) {
+      await launch(_museums.items[_index].mapsLink);
     } else {
-      throw 'Empty museum info. Error to open map';
+      throw 'Map can\'t launch. Error to open the map';
     }
   }
 }

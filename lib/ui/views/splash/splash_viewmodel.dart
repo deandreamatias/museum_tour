@@ -1,10 +1,10 @@
-import 'package:museum_tour/app/router.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../app/constants.dart';
 import '../../../app/locator.dart';
+import '../../../app/router.dart';
+import '../../../external/hive_service.dart';
 import '../../../main.dart';
-import '../../../services/local_storage_service.dart';
 
 class SplashViewModel extends BaseViewModel {
   final _hiveService = locator<HiveService>();

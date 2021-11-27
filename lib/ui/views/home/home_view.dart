@@ -99,7 +99,8 @@ class _HomeViewState extends State<HomeView> {
                                 (item) => ChipCustom(
                                   selected: false,
                                   title: item,
-                                  onSelected: (value) => {},
+                                  onSelected: (value) =>
+                                      value ? model.saveLanguage(item) : null,
                                 ),
                               )
                               .toList()
@@ -110,7 +111,7 @@ class _HomeViewState extends State<HomeView> {
           ],
         ),
       ),
-      onModelReady: (HomeViewModel model) => model.loadLanguages(),
+      onModelReady: (HomeViewModel model) => model.initialLoad(),
       viewModelBuilder: () => HomeViewModel(),
     );
   }

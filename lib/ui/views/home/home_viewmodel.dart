@@ -1,15 +1,23 @@
 import 'package:museum_tour/app/router.dart';
+import 'package:museum_tour/core/exposition/domain/models/languages.dart';
+import 'package:museum_tour/core/exposition/domain/use_cases/get_languages_use_case.dart';
+import 'package:museum_tour/core/exposition/domain/use_cases/get_settings_use_case.dart';
+import 'package:museum_tour/core/exposition/domain/use_cases/save_language_use_case.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../app/locator.dart';
 import '../../../main.dart';
-import '../../../services/settings_service.dart';
 
 class HomeViewModel extends BaseViewModel {
-  final _settingsService = locator<SettingsService>();
+  final _getSettingsUseCase = locator<GetSettingsUseCase>();
+  final _getLanguagesUseCase = locator<GetLanguagesUseCase>();
+  final _saveLanguageUseCase = locator<SaveLanguageUseCase>();
 
-  int get indexLanguage => _settingsService.indexLanguage;
-  List<String> get listLanguages => _settingsService.listLanguages;
+  List<String> get listLanguages => _languages.languages;
+  String get language => _language;
+
+  late Languages _languages;
+  String _language = '';
 
   Future navigateToMuseumDetails() async {
     await appRouter.push(MuseumDetailsRoute());
@@ -23,15 +31,17 @@ class HomeViewModel extends BaseViewModel {
     await appRouter.push(CustomizeTourRoute());
   }
 
-  void loadLanguages() {
+  void initialLoad() async {
     setBusy(true);
-    _settingsService.loadLanguages();
+    _languages = await _getLanguagesUseCase();
+    final settings = _getSettingsUseCase();
+    _language = settings.language;
     setBusy(false);
   }
 
-  void setLanguage(int index) {
+  void saveLanguage(String language) {
     setBusy(true);
-    _settingsService.setLanguage(index);
+    _saveLanguageUseCase(language);
     setBusy(false);
   }
 }

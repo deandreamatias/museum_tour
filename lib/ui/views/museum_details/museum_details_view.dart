@@ -50,7 +50,7 @@ class _MuseumDetailsViewState extends State<MuseumDetailsView> {
                       child: model.isBusy
                           ? CircularProgressIndicator()
                           : TopAppBar(
-                              title: model.museum.name,
+                              title: model.museum?.name ?? '',
                               onPressed: () async =>
                                   await model.navigateToHome(),
                             ),
@@ -89,7 +89,7 @@ class _MuseumDetailsViewState extends State<MuseumDetailsView> {
                             context: context,
                             builder: (context) => DialogMuseum(
                               title: 'Horarios',
-                              content: model.museum.schedules,
+                              content: model.museum?.schedules ?? '',
                             ),
                           ),
                         ),
@@ -99,7 +99,7 @@ class _MuseumDetailsViewState extends State<MuseumDetailsView> {
                             context: context,
                             builder: (context) => DialogMuseum(
                               title: 'Tarifas',
-                              content: model.museum.price,
+                              content: model.museum?.price ?? '',
                             ),
                           ),
                         ),

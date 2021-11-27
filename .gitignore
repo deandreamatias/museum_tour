@@ -9,9 +9,6 @@
 .buildlog/
 .history
 .svn/
-.fvm/*
-**/*.config.dart
-**/*.gr.dart
 
 
 # IntelliJ related
@@ -52,6 +49,10 @@ linked_*.ds
 unlinked.ds
 unlinked_spec.ds
 .flutter-plugins-dependencies
+.fvm/*
+**/*.config.dart
+**/*.gr.dart
+**/*.g.dart
 
 # Android related
 **/android/**/gradle-wrapper.jar

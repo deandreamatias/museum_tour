@@ -125,8 +125,7 @@ class CustomizeTourView extends StatelessWidget {
                                       value: model.autoplay,
                                       checkColor: CustomColor.TEXT_MEDIUM,
                                       activeColor: CustomColor.ACCENT,
-                                      onChanged: (bool? value) =>
-                                          model.setAutoplay,
+                                      onChanged: (bool? value) => {},
                                       controlAffinity:
                                           ListTileControlAffinity.leading,
                                       title: Text(

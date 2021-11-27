@@ -1,16 +1,15 @@
-import 'package:museum_tour/models/exposition.dart';
-import 'package:museum_tour/services/tour_service.dart';
 import 'package:stacked/stacked.dart';
 
-import 'package:museum_tour/app/locator.dart';
-import 'package:museum_tour/app/router.gr.dart';
-
+import '../../../../app/locator.dart';
+import '../../../../app/router.gr.dart';
+import '../../../../core/exposition/domain/models/exposition_item.dart';
+import '../../../../core/exposition/domain/services/tour_service.dart';
 import '../../../../main.dart';
 
 class ExpositionTourViewModel extends BaseViewModel {
   final _tourService = locator<TourService>();
 
-  Item get item => _tourService.getItem();
+  ExpositionItem get item => _tourService.getItem();
 
   Future navigateToHome() async {
     _tourService.finishExpo();

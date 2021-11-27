@@ -1,7 +1,7 @@
 import 'package:stacked/stacked.dart';
 
 import '../../../app/locator.dart';
-import '../../../services/tour_service.dart';
+import '../../../core/exposition/domain/services/tour_service.dart';
 
 class ExpoIndicatorViewModel extends BaseViewModel {
   final _tourService = locator<TourService>();
