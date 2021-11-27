@@ -8,8 +8,12 @@ class GetLanguagesUseCase {
   final IExpositionRepository _iExpositionRepository;
 
   GetLanguagesUseCase(this._iExpositionRepository);
+  Languages languages = Languages();
 
   Future<Languages> call() async {
-    return await _iExpositionRepository.getAvaliableLanguages();
+    if (languages.languages.isEmpty) {
+      languages = await _iExpositionRepository.getAvaliableLanguages();
+    }
+    return languages;
   }
 }

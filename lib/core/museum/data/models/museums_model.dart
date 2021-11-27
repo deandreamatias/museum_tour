@@ -10,12 +10,15 @@ class MuseumsModel extends Museums {
   MuseumsModel({
     required String id,
     required String update,
-    required List<MuseumModel> items,
+    required this.items,
   }) : super(
           id: id,
           items: items,
           update: update,
         );
+  @override
+  // ignore: overridden_fields
+  final List<MuseumModel> items;
 
   factory MuseumsModel.fromJson(Map<String, dynamic> json) =>
       _$MuseumsModelFromJson(json);
