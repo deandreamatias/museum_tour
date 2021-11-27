@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:stacked/stacked.dart';
 
-import '../../../../app/constants.dart';
 import '../../../smart_widgets/expo_indicator/expo_indicator.dart';
-import '../../../widgets/chip_custom.dart';
 import '../../../widgets/top_app_bar.dart';
 import 'customize_tour_viewmodel.dart';
 
@@ -17,7 +15,6 @@ class CustomizeTourView extends StatelessWidget {
       builder: (context, CustomizeTourViewModel model, child) => WillPopScope(
         onWillPop: model.resetTour,
         child: Scaffold(
-          backgroundColor: CustomColor.background,
           body: LayoutBuilder(
             builder: (context, constraints) => SizedBox(
               height: constraints.maxHeight,
@@ -79,10 +76,10 @@ class CustomizeTourView extends StatelessWidget {
                                             children: [
                                               ...model.listLanguages
                                                   .map(
-                                                    (item) => ChipCustom(
-                                                      selected: false,
-                                                      title: item,
+                                                    (item) => ChoiceChip(
+                                                      label: Text(item),
                                                       onSelected: (value) => {},
+                                                      selected: false,
                                                     ),
                                                   )
                                                   .toList()
@@ -103,19 +100,28 @@ class CustomizeTourView extends StatelessWidget {
                                             WrapCrossAlignment.start,
                                         alignment: WrapAlignment.start,
                                         spacing: 8.0,
-                                        children: const <Widget>[
-                                          ChipCustom(
-                                            title: 'Pequeño (x0.75)',
+                                        children: <Widget>[
+                                          ChoiceChip(
+                                            label:
+                                                const Text('Pequeño (x0.75)'),
+                                            onSelected: (value) => {},
+                                            selected: false,
+                                          ),
+                                          ChoiceChip(
+                                            label: const Text('Médio'),
+                                            onSelected: (value) => {},
                                             selected: true,
                                           ),
-                                          ChipCustom(
-                                            title: 'Médio',
+                                          ChoiceChip(
+                                            label: const Text('Grande (x1.5)'),
+                                            onSelected: (value) => {},
+                                            selected: false,
                                           ),
-                                          ChipCustom(
-                                            title: 'Grande (x1.5)',
-                                          ),
-                                          ChipCustom(
-                                            title: 'Extra grande (x2.0)',
+                                          ChoiceChip(
+                                            label: const Text(
+                                                'Extra grande (x2.0)'),
+                                            onSelected: (value) => {},
+                                            selected: false,
                                           ),
                                         ],
                                       ),
@@ -123,8 +129,6 @@ class CustomizeTourView extends StatelessWidget {
                                     const SizedBox(height: 16.0),
                                     CheckboxListTile(
                                       value: model.autoplay,
-                                      checkColor: CustomColor.textMedium,
-                                      activeColor: CustomColor.accent,
                                       onChanged: (bool? value) => {},
                                       controlAffinity:
                                           ListTileControlAffinity.leading,
@@ -141,17 +145,8 @@ class CustomizeTourView extends StatelessWidget {
                                 child: FloatingActionButton.extended(
                                   onPressed: () async =>
                                       await model.navigateToExpositionTour(),
-                                  icon: const Icon(
-                                    FeatherIcons.navigation2,
-                                    color: CustomColor.textHigh,
-                                  ),
-                                  backgroundColor: CustomColor.accent,
-                                  label: const Text(
-                                    'IR A EXPOSICIÓN',
-                                    style: TextStyle(
-                                      color: CustomColor.textHigh,
-                                    ),
-                                  ),
+                                  icon: const Icon(FeatherIcons.navigation2),
+                                  label: const Text('IR A EXPOSICIÓN'),
                                 ),
                               )
                             ],
@@ -180,8 +175,11 @@ class CustomizeTourView extends StatelessWidget {
                         begin: Alignment.bottomCenter,
                         end: Alignment.topCenter,
                         colors: [
-                          CustomColor.background,
-                          CustomColor.background.withOpacity(0.1)
+                          Theme.of(context).colorScheme.background,
+                          Theme.of(context)
+                              .colorScheme
+                              .background
+                              .withOpacity(0.1)
                         ],
                       ),
                     ),

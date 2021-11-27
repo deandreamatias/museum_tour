@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-import '../../../app/constants.dart';
 import 'splash_viewmodel.dart';
 
 class SplashView extends StatelessWidget {
@@ -11,7 +10,6 @@ class SplashView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<SplashViewModel>.nonReactive(
       builder: (context, SplashViewModel model, child) => const Scaffold(
-        backgroundColor: CustomColor.background,
         body: Center(child: CircularProgressIndicator()),
       ),
       createNewModelOnInsert: true,

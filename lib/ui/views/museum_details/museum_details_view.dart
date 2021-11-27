@@ -22,113 +22,100 @@ class _MuseumDetailsViewState extends State<MuseumDetailsView> {
       onModelReady: (MuseumDetailsViewModel model) async =>
           await model.loadMuseumInfo(),
       builder: (context, MuseumDetailsViewModel model, child) => Scaffold(
-        body: Container(
-          color: CustomColor.background,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              Expanded(
-                flex: 3,
-                child: Stack(
-                  alignment: Alignment.bottomRight,
-                  children: <Widget>[
-                    Container(
-                      margin: const EdgeInsets.only(bottom: 40.0),
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(32.0),
-                          bottomLeft: Radius.circular(32.0),
-                        ),
-                        image: DecorationImage(
-                          image: AssetImage(Assets.infoMuseum),
-                          fit: BoxFit.cover,
-                        ),
+        body: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            Expanded(
+              flex: 3,
+              child: Stack(
+                alignment: Alignment.bottomRight,
+                children: <Widget>[
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 40.0),
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(32.0),
+                        bottomLeft: Radius.circular(32.0),
+                      ),
+                      image: DecorationImage(
+                        image: AssetImage(Assets.infoMuseum),
+                        fit: BoxFit.cover,
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.topCenter,
-                      child: model.isBusy
-                          ? const CircularProgressIndicator()
-                          : TopAppBar(
-                              title: model.museum?.name ?? '',
-                              onPressed: () async =>
-                                  await model.navigateToHome(),
-                            ),
+                  ),
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: model.isBusy
+                        ? const CircularProgressIndicator()
+                        : TopAppBar(
+                            title: model.museum?.name ?? '',
+                            onPressed: () async => await model.navigateToHome(),
+                          ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: FloatingActionButton.extended(
+                      onPressed: () async =>
+                          await model.openLink(isWebsite: false),
+                      icon: const Icon(FeatherIcons.map),
+                      label: const Text('COMO LLEGAR'),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: FloatingActionButton.extended(
-                        onPressed: () async =>
-                            await model.openLink(isWebsite: false),
-                        icon: const Icon(
-                          FeatherIcons.map,
-                          color: CustomColor.textHigh,
-                        ),
-                        backgroundColor: CustomColor.accent,
-                        label: const Text(
-                          'COMO LLEGAR',
-                          style: TextStyle(
-                            color: CustomColor.textHigh,
+                  )
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 2,
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      ButtonGrid(
+                        title: 'Horarios',
+                        onPressed: () => showDialog(
+                          context: context,
+                          builder: (context) => DialogMuseum(
+                            title: 'Horarios',
+                            content: model.museum?.schedules ?? '',
                           ),
                         ),
                       ),
-                    )
-                  ],
-                ),
+                      ButtonGrid(
+                        title: 'Tarifas',
+                        onPressed: () => showDialog(
+                          context: context,
+                          builder: (context) => DialogMuseum(
+                            title: 'Tarifas',
+                            content: model.museum?.price ?? '',
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      ButtonGrid(
+                        title: 'Contacto',
+                        onPressed: () => showDialog(
+                          context: context,
+                          builder: (context) => DialogMuseum(
+                            title: 'Contacto',
+                            content: model.museumContact,
+                          ),
+                        ),
+                      ),
+                      ButtonGrid(
+                        title: 'Sitio web',
+                        onPressed: () => model.openLink(),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              Expanded(
-                flex: 2,
-                child: Column(
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        ButtonGrid(
-                          title: 'Horarios',
-                          onPressed: () => showDialog(
-                            context: context,
-                            builder: (context) => DialogMuseum(
-                              title: 'Horarios',
-                              content: model.museum?.schedules ?? '',
-                            ),
-                          ),
-                        ),
-                        ButtonGrid(
-                          title: 'Tarifas',
-                          onPressed: () => showDialog(
-                            context: context,
-                            builder: (context) => DialogMuseum(
-                              title: 'Tarifas',
-                              content: model.museum?.price ?? '',
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        ButtonGrid(
-                          title: 'Contacto',
-                          onPressed: () => showDialog(
-                            context: context,
-                            builder: (context) => DialogMuseum(
-                              title: 'Contacto',
-                              content: model.museumContact,
-                            ),
-                          ),
-                        ),
-                        ButtonGrid(
-                          title: 'Sitio web',
-                          onPressed: () => model.openLink(),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       viewModelBuilder: () => MuseumDetailsViewModel(),

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:stacked/stacked.dart';
 
-import '../../../app/constants.dart';
-import '../../widgets/chip_custom.dart';
 import '../../widgets/top_app_bar.dart';
 import 'other_museums_viewmodel.dart';
 
@@ -20,7 +18,6 @@ class _OtherMuseumsViewState extends State<OtherMuseumsView> {
     return ViewModelBuilder.reactive(
       onModelReady: (OtherMuseumsViewModel model) => model.loadMuseumsInfo(),
       builder: (context, OtherMuseumsViewModel model, child) => Scaffold(
-        backgroundColor: CustomColor.background,
         body: LayoutBuilder(
           builder: (context, constraints) => SizedBox(
             height: constraints.maxHeight,
@@ -66,10 +63,10 @@ class _OtherMuseumsViewState extends State<OtherMuseumsView> {
                                       children: [
                                         ...model.museums
                                             .map(
-                                              (item) => ChipCustom(
-                                                selected: false,
-                                                title: item.name,
+                                              (item) => ChoiceChip(
+                                                label: Text(item.name),
                                                 onSelected: (value) => {},
+                                                selected: true,
                                               ),
                                             )
                                             .toList()
@@ -84,17 +81,8 @@ class _OtherMuseumsViewState extends State<OtherMuseumsView> {
                         padding: const EdgeInsets.all(16.0),
                         child: FloatingActionButton.extended(
                           onPressed: () async => await model.openLink(),
-                          icon: const Icon(
-                            FeatherIcons.map,
-                            color: CustomColor.textHigh,
-                          ),
-                          backgroundColor: CustomColor.accent,
-                          label: const Text(
-                            'COMO LLEGAR',
-                            style: TextStyle(
-                              color: CustomColor.textHigh,
-                            ),
-                          ),
+                          icon: const Icon(FeatherIcons.map),
+                          label: const Text('COMO LLEGAR'),
                         ),
                       )
                     ],

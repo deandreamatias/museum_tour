@@ -16,7 +16,7 @@ class HomeViewModel extends BaseViewModel {
   List<String> get listLanguages => _languages.languages;
   String get language => _language;
 
-  late Languages _languages;
+  Languages _languages = Languages();
   String _language = '';
 
   Future navigateToMuseumDetails() async {

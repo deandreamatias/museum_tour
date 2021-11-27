@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'app/locator.dart';
 import 'app/router.dart';
+import 'app/theme.dart';
 
 final appRouter = AppRouter();
 
@@ -17,7 +18,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Museum tour',
-      theme: ThemeData(fontFamily: 'Quicksand'),
+      darkTheme: CustomTheme().availableThemes[1],
+      theme: CustomTheme().availableThemes[0],
       routerDelegate: appRouter.delegate(),
       routeInformationParser: appRouter.defaultRouteParser(),
     );

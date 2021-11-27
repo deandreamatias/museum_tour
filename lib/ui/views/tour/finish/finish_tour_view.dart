@@ -13,7 +13,6 @@ class FinishTourView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder.nonReactive(
       builder: (context, FinishTourViewModel model, child) => Scaffold(
-        backgroundColor: CustomColor.background,
         body: LayoutBuilder(
           builder: (context, constraints) => SingleChildScrollView(
             child: Column(
@@ -69,7 +68,7 @@ class FinishTourView extends StatelessWidget {
                               color: Colors.white,
                               border: Border.all(
                                 width: 1.0,
-                                color: CustomColor.accent,
+                                color: Theme.of(context).colorScheme.primary,
                               ),
                             ),
                           ),
@@ -88,17 +87,8 @@ class FinishTourView extends StatelessWidget {
                       padding: const EdgeInsets.all(16.0),
                       child: FloatingActionButton.extended(
                         onPressed: () async => await model.navigateToHome(),
-                        icon: const Icon(
-                          FeatherIcons.share2,
-                          color: CustomColor.textHigh,
-                        ),
-                        backgroundColor: CustomColor.accent,
-                        label: const Text(
-                          'COMPARTIR',
-                          style: TextStyle(
-                            color: CustomColor.textHigh,
-                          ),
-                        ),
+                        icon: const Icon(FeatherIcons.share2),
+                        label: const Text('COMPARTIR'),
                       ),
                     )
                   ],

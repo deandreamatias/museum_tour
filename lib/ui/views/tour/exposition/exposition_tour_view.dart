@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:stacked/stacked.dart';
+
 import '../../../../app/constants.dart';
 import '../../../smart_widgets/expo_indicator/expo_indicator.dart';
 import '../../../widgets/top_app_bar.dart';
-import 'package:stacked/stacked.dart';
-
 import 'exposition_tour_viewmodel.dart';
 
 class ExpositionTourView extends StatelessWidget {
@@ -13,7 +13,6 @@ class ExpositionTourView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
       builder: (context, ExpositionTourViewModel model, child) => Scaffold(
-        backgroundColor: CustomColor.background,
         body: LayoutBuilder(
           builder: (context, constraints) => SizedBox(
             height: constraints.maxHeight,
@@ -60,21 +59,6 @@ class ExpositionTourView extends StatelessWidget {
                                     width: 56.0,
                                     child: ElevatedButton(
                                       child: const Icon(FeatherIcons.skipBack),
-                                      style: ButtonStyle(
-                                        backgroundColor:
-                                            MaterialStateProperty.all<Color>(
-                                                CustomColor.background),
-                                        shape: MaterialStateProperty.all<
-                                            OutlinedBorder>(
-                                          const RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(32.0)),
-                                            side: BorderSide(
-                                              color: CustomColor.accent,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
                                       onPressed: () => model.backExpo(),
                                     ),
                                   ),
@@ -86,17 +70,8 @@ class ExpositionTourView extends StatelessWidget {
                                   heroTag: 'fab',
                                   onPressed: () async =>
                                       await model.continueExpo(),
-                                  icon: const Icon(
-                                    FeatherIcons.skipForward,
-                                    color: CustomColor.textHigh,
-                                  ),
-                                  backgroundColor: CustomColor.accent,
-                                  label: const Text(
-                                    'CONTINUAR',
-                                    style: TextStyle(
-                                      color: CustomColor.textHigh,
-                                    ),
-                                  ),
+                                  icon: const Icon(FeatherIcons.skipForward),
+                                  label: const Text('CONTINUAR'),
                                 ),
                               )
                             ],
@@ -144,27 +119,6 @@ class ExpositionTourView extends StatelessWidget {
                                               child: ElevatedButton(
                                                 child: const Icon(
                                                     FeatherIcons.playCircle),
-                                                style: ButtonStyle(
-                                                  backgroundColor:
-                                                      MaterialStateProperty.all<
-                                                          Color>(Colors.white),
-                                                  elevation:
-                                                      MaterialStateProperty.all<
-                                                          double>(0.0),
-                                                  shape: MaterialStateProperty
-                                                      .all<OutlinedBorder>(
-                                                    const RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  32.0)),
-                                                      side: BorderSide(
-                                                        color:
-                                                            CustomColor.accent,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
                                                 onPressed: () {},
                                               ),
                                             )
@@ -192,8 +146,8 @@ class ExpositionTourView extends StatelessWidget {
                       begin: Alignment.bottomCenter,
                       end: Alignment.topCenter,
                       colors: [
-                        CustomColor.background,
-                        CustomColor.background.withOpacity(0.1)
+                        Theme.of(context).colorScheme.surface,
+                        Theme.of(context).colorScheme.surface.withOpacity(0.1)
                       ],
                     ),
                   ),

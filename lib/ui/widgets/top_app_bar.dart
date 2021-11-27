@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
-import '../../app/constants.dart';
-
 class TopAppBar extends StatelessWidget {
   const TopAppBar({
     this.onPressed,
@@ -20,10 +18,13 @@ class TopAppBar extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         gradient: hasImageBackground
-            ? const LinearGradient(
+            ? LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [CustomColor.textHigh, Colors.transparent],
+                colors: [
+                  Theme.of(context).colorScheme.onSurface,
+                  Colors.transparent
+                ],
               )
             : null,
       ),
@@ -34,8 +35,9 @@ class TopAppBar extends StatelessWidget {
               ? IconButton(
                   icon: const Icon(FeatherIcons.home),
                   onPressed: () async => await onPressed!(),
-                  color:
-                      hasImageBackground ? Colors.white : CustomColor.textHigh,
+                  color: hasImageBackground
+                      ? Theme.of(context).colorScheme.surface
+                      : Theme.of(context).colorScheme.onSurface,
                 )
               : null,
           backgroundColor: Colors.transparent,
@@ -43,7 +45,9 @@ class TopAppBar extends StatelessWidget {
           title: Text(
             title,
             style: TextStyle(
-              color: hasImageBackground ? Colors.white : CustomColor.textHigh,
+              color: hasImageBackground
+                  ? Theme.of(context).colorScheme.surface
+                  : Theme.of(context).colorScheme.onSurface,
             ),
           ),
           centerTitle: true,

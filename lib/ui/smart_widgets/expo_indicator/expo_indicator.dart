@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:stacked/stacked.dart';
 
-import '../../../app/constants.dart';
 import 'expo_indicator_viewmodel.dart';
 
 class ExpoIndicator extends StatelessWidget {
@@ -26,8 +25,11 @@ class ExpoIndicator extends StatelessWidget {
                     activeIndex: model.indicator,
                     count: model.lengthItem,
                     effect: ScrollingDotsEffect(
-                      activeDotColor: CustomColor.accent,
-                      dotColor: CustomColor.accent.withOpacity(0.6),
+                      activeDotColor: Theme.of(context).colorScheme.primary,
+                      dotColor: Theme.of(context)
+                          .colorScheme
+                          .primary
+                          .withOpacity(0.6),
                       spacing: 16.0,
                       maxVisibleDots: 7,
                     ),

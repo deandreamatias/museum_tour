@@ -4,7 +4,6 @@ import 'package:stacked/stacked.dart';
 
 import '../../../app/constants.dart';
 import '../../widgets/button_grid.dart';
-import '../../widgets/chip_custom.dart';
 import '../../widgets/top_app_bar.dart';
 import 'home_viewmodel.dart';
 
@@ -20,7 +19,6 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
       builder: (context, HomeViewModel model, child) => Scaffold(
-        backgroundColor: CustomColor.background,
         body: Column(
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
@@ -55,15 +53,8 @@ class _HomeViewState extends State<HomeView> {
                           await model.navigateToCustomizeTour(),
                       icon: const Icon(
                         FeatherIcons.navigation,
-                        color: CustomColor.textHigh,
                       ),
-                      backgroundColor: CustomColor.accent,
-                      label: const Text(
-                        'INICIAR',
-                        style: TextStyle(
-                          color: CustomColor.textHigh,
-                        ),
-                      ),
+                      label: const Text('INICIAR'),
                     ),
                   )
                 ],
@@ -96,11 +87,11 @@ class _HomeViewState extends State<HomeView> {
                         children: [
                           ...model.listLanguages
                               .map(
-                                (item) => ChipCustom(
-                                  selected: false,
-                                  title: item,
+                                (item) => ChoiceChip(
+                                  label: Text(item),
                                   onSelected: (value) =>
                                       value ? model.saveLanguage(item) : null,
+                                  selected: false,
                                 ),
                               )
                               .toList()
