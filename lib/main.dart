@@ -7,7 +7,7 @@ final appRouter = AppRouter();
 
 void main() {
   setupLocator();
-  runApp(App());
+  runApp(const App());
 }
 
 class App extends StatelessWidget {

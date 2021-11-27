@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import 'package:museum_tour/core/museum/domain/models/museum.dart';
+import '../models/museum.dart';
 
 import '../repositories/i_museums_repository.dart';
 
@@ -11,9 +11,7 @@ class GetMuseumUseCase {
   GetMuseumUseCase(this._museumsRepository);
 
   Future<Museum?> call() async {
-    if (museum == null) {
-      museum = await _museumsRepository.getMuseum();
-    }
+    museum ??= await _museumsRepository.getMuseum();
     return museum;
   }
 }

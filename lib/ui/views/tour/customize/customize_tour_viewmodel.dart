@@ -27,12 +27,12 @@ class CustomizeTourViewModel extends BaseViewModel {
   String _language = '';
   String _name = '';
   bool _autoplay = false;
-  TextEditingController _textEditingController =
+  final TextEditingController _textEditingController =
       TextEditingController(text: '');
 
   Future navigateToHome() async {
     resetTour();
-    await appRouter.push(HomeRoute());
+    await appRouter.push(const HomeRoute());
   }
 
   Future navigateToExpositionTour() async {
@@ -47,7 +47,7 @@ class CustomizeTourViewModel extends BaseViewModel {
       ),
     );
     _textEditingController.clear();
-    await appRouter.push(ExpositionTourRoute());
+    await appRouter.push(const ExpositionTourRoute());
   }
 
   Future<bool> resetTour() {

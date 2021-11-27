@@ -18,7 +18,7 @@ class DialogMuseum extends StatelessWidget {
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: Text('CERRAR'),
+          child: const Text('CERRAR'),
         ),
       ],
     );

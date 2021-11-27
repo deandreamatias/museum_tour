@@ -1,5 +1,4 @@
-import 'package:museum_tour/core/exposition/data/models/languages_model.dart';
-
+import '../../data/models/languages_model.dart';
 import '../models/exposition.dart';
 
 abstract class IExpositionRepository {

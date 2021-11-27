@@ -1,11 +1,11 @@
-import 'package:museum_tour/app/router.dart';
-import 'package:museum_tour/core/exposition/domain/models/languages.dart';
-import 'package:museum_tour/core/exposition/domain/use_cases/get_languages_use_case.dart';
-import 'package:museum_tour/core/exposition/domain/use_cases/get_settings_use_case.dart';
-import 'package:museum_tour/core/exposition/domain/use_cases/save_language_use_case.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../app/locator.dart';
+import '../../../app/router.dart';
+import '../../../core/exposition/domain/models/languages.dart';
+import '../../../core/exposition/domain/use_cases/get_languages_use_case.dart';
+import '../../../core/exposition/domain/use_cases/get_settings_use_case.dart';
+import '../../../core/exposition/domain/use_cases/save_language_use_case.dart';
 import '../../../main.dart';
 
 class HomeViewModel extends BaseViewModel {
@@ -20,15 +20,15 @@ class HomeViewModel extends BaseViewModel {
   String _language = '';
 
   Future navigateToMuseumDetails() async {
-    await appRouter.push(MuseumDetailsRoute());
+    await appRouter.push(const MuseumDetailsRoute());
   }
 
   Future navigateToOtherMuseums() async {
-    await appRouter.push(OtherMuseumsRoute());
+    await appRouter.push(const OtherMuseumsRoute());
   }
 
   Future navigateToCustomizeTour() async {
-    await appRouter.push(CustomizeTourRoute());
+    await appRouter.push(const CustomizeTourRoute());
   }
 
   void initialLoad() async {

@@ -1,4 +1,4 @@
-import 'package:museum_tour/core/exposition/domain/models/exposition_item.dart';
+import 'exposition_item.dart';
 
 class Exposition {
   Exposition({

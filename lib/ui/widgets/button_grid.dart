@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../app/constants.dart';
 
 class ButtonGrid extends StatelessWidget {
-  ButtonGrid({
+  const ButtonGrid({
     required this.title,
     this.onPressed,
     Key? key,
@@ -25,10 +25,10 @@ class ButtonGrid extends StatelessWidget {
         child: Center(
           child: Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontFamily: 'Quicksand',
               fontSize: 18,
-              color: CustomColor.TEXT_MEDIUM,
+              color: CustomColor.textMedium,
             ),
             textAlign: TextAlign.center,
           ),
@@ -36,10 +36,10 @@ class ButtonGrid extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(32.0),
           color: Colors.white,
-          border: Border.all(width: 1.0, color: CustomColor.ACCENT),
-          boxShadow: [
+          border: Border.all(width: 1.0, color: CustomColor.accent),
+          boxShadow: const [
             BoxShadow(
-              color: const Color(0x29000000),
+              color: Color(0x29000000),
               offset: Offset(0, 0),
               blurRadius: 8,
             ),

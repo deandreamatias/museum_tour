@@ -23,7 +23,7 @@ class _MuseumDetailsViewState extends State<MuseumDetailsView> {
           await model.loadMuseumInfo(),
       builder: (context, MuseumDetailsViewModel model, child) => Scaffold(
         body: Container(
-          color: CustomColor.BACKGROUND,
+          color: CustomColor.background,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
@@ -34,13 +34,13 @@ class _MuseumDetailsViewState extends State<MuseumDetailsView> {
                   children: <Widget>[
                     Container(
                       margin: const EdgeInsets.only(bottom: 40.0),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
                           bottomRight: Radius.circular(32.0),
                           bottomLeft: Radius.circular(32.0),
                         ),
                         image: DecorationImage(
-                          image: const AssetImage(Assets.INFO_MUSEUM),
+                          image: AssetImage(Assets.infoMuseum),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -48,7 +48,7 @@ class _MuseumDetailsViewState extends State<MuseumDetailsView> {
                     Align(
                       alignment: Alignment.topCenter,
                       child: model.isBusy
-                          ? CircularProgressIndicator()
+                          ? const CircularProgressIndicator()
                           : TopAppBar(
                               title: model.museum?.name ?? '',
                               onPressed: () async =>
@@ -60,15 +60,15 @@ class _MuseumDetailsViewState extends State<MuseumDetailsView> {
                       child: FloatingActionButton.extended(
                         onPressed: () async =>
                             await model.openLink(isWebsite: false),
-                        icon: Icon(
+                        icon: const Icon(
                           FeatherIcons.map,
-                          color: CustomColor.TEXT_HIGH,
+                          color: CustomColor.textHigh,
                         ),
-                        backgroundColor: CustomColor.ACCENT,
-                        label: Text(
+                        backgroundColor: CustomColor.accent,
+                        label: const Text(
                           'COMO LLEGAR',
                           style: TextStyle(
-                            color: CustomColor.TEXT_HIGH,
+                            color: CustomColor.textHigh,
                           ),
                         ),
                       ),

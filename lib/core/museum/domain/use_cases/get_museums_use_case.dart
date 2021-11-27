@@ -11,9 +11,7 @@ class GetMuseumsUseCase {
   GetMuseumsUseCase(this._museumsRepository);
 
   Future<Museums> call() async {
-    if (museums == null) {
-      museums = await _museumsRepository.getMuseums();
-    }
+    museums ??= await _museumsRepository.getMuseums();
     return museums ?? Museums(id: '', items: [], update: '');
   }
 }

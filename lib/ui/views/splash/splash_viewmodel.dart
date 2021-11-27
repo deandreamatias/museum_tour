@@ -11,9 +11,9 @@ class SplashViewModel extends BaseViewModel {
 
   Future<void> initPreferences() async {
     await _hiveService.init();
-    await _hiveService.config(box: DbKeys.PREFS_BOX);
+    await _hiveService.config(box: DbKeys.prefsBox);
     if (_hiveService.canUseService) {
-      await appRouter.push(HomeRoute());
+      await appRouter.push(const HomeRoute());
     } else {
       throw 'Error to init and config preferences';
     }

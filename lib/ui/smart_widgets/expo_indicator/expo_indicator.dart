@@ -26,8 +26,8 @@ class ExpoIndicator extends StatelessWidget {
                     activeIndex: model.indicator,
                     count: model.lengthItem,
                     effect: ScrollingDotsEffect(
-                      activeDotColor: CustomColor.ACCENT,
-                      dotColor: CustomColor.ACCENT.withOpacity(0.6),
+                      activeDotColor: CustomColor.accent,
+                      dotColor: CustomColor.accent.withOpacity(0.6),
                       spacing: 16.0,
                       maxVisibleDots: 7,
                     ),

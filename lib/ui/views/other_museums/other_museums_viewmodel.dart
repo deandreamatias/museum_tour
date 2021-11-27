@@ -19,7 +19,7 @@ class OtherMuseumsViewModel extends BaseViewModel {
   Museum get museumSelected => _museums.items[_index];
 
   Future<void> navigateToHome() async {
-    await appRouter.push(HomeRoute());
+    await appRouter.push(const HomeRoute());
   }
 
   Future<void> loadMuseumsInfo() async {

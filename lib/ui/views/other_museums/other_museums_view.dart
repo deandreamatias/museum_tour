@@ -20,9 +20,9 @@ class _OtherMuseumsViewState extends State<OtherMuseumsView> {
     return ViewModelBuilder.reactive(
       onModelReady: (OtherMuseumsViewModel model) => model.loadMuseumsInfo(),
       builder: (context, OtherMuseumsViewModel model, child) => Scaffold(
-        backgroundColor: CustomColor.BACKGROUND,
+        backgroundColor: CustomColor.background,
         body: LayoutBuilder(
-          builder: (context, constraints) => Container(
+          builder: (context, constraints) => SizedBox(
             height: constraints.maxHeight,
             child: SingleChildScrollView(
               child: Column(
@@ -32,7 +32,7 @@ class _OtherMuseumsViewState extends State<OtherMuseumsView> {
                     children: <Widget>[
                       Container(
                         margin: const EdgeInsets.only(bottom: 40.0),
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           borderRadius: BorderRadius.only(
                             bottomRight: Radius.circular(32.0),
                             bottomLeft: Radius.circular(32.0),
@@ -61,7 +61,7 @@ class _OtherMuseumsViewState extends State<OtherMuseumsView> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 16.0),
                               child: model.isBusy
-                                  ? CircularProgressIndicator()
+                                  ? const CircularProgressIndicator()
                                   : Wrap(
                                       children: [
                                         ...model.museums
@@ -76,7 +76,7 @@ class _OtherMuseumsViewState extends State<OtherMuseumsView> {
                                       ],
                                     ),
                             ),
-                            SizedBox(height: 32.0)
+                            const SizedBox(height: 32.0)
                           ],
                         ),
                       ),
@@ -84,15 +84,15 @@ class _OtherMuseumsViewState extends State<OtherMuseumsView> {
                         padding: const EdgeInsets.all(16.0),
                         child: FloatingActionButton.extended(
                           onPressed: () async => await model.openLink(),
-                          icon: Icon(
+                          icon: const Icon(
                             FeatherIcons.map,
-                            color: CustomColor.TEXT_HIGH,
+                            color: CustomColor.textHigh,
                           ),
-                          backgroundColor: CustomColor.ACCENT,
-                          label: Text(
+                          backgroundColor: CustomColor.accent,
+                          label: const Text(
                             'COMO LLEGAR',
                             style: TextStyle(
-                              color: CustomColor.TEXT_HIGH,
+                              color: CustomColor.textHigh,
                             ),
                           ),
                         ),
@@ -103,14 +103,14 @@ class _OtherMuseumsViewState extends State<OtherMuseumsView> {
                     width: constraints.maxWidth,
                     padding: const EdgeInsets.all(16.0),
                     child: model.isBusy
-                        ? CircularProgressIndicator()
+                        ? const CircularProgressIndicator()
                         : Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
                                 'Teléfono: ${model.museumSelected.telephone}',
                               ),
-                              Text(
+                              const Text(
                                 'Sitio web',
                               ),
                               Text(
@@ -122,7 +122,7 @@ class _OtherMuseumsViewState extends State<OtherMuseumsView> {
                               Text(
                                 'Horarios: ${model.museumSelected.schedules}',
                               ),
-                              SizedBox(height: 40.0),
+                              const SizedBox(height: 40.0),
                             ],
                           ),
                   ),

@@ -12,6 +12,6 @@ class FinishTourViewModel extends BaseViewModel {
   ExpositionItem? get expoFavItem => _tourService.favItem;
 
   Future navigateToHome() async {
-    await appRouter.push(HomeRoute());
+    await appRouter.push(const HomeRoute());
   }
 }

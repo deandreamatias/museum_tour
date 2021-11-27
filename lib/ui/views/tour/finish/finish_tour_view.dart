@@ -13,7 +13,7 @@ class FinishTourView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder.nonReactive(
       builder: (context, FinishTourViewModel model, child) => Scaffold(
-        backgroundColor: CustomColor.BACKGROUND,
+        backgroundColor: CustomColor.background,
         body: LayoutBuilder(
           builder: (context, constraints) => SingleChildScrollView(
             child: Column(
@@ -23,7 +23,7 @@ class FinishTourView extends StatelessWidget {
                   children: <Widget>[
                     Container(
                       margin: const EdgeInsets.only(bottom: 40.0),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
                           bottomRight: Radius.circular(32.0),
                           bottomLeft: Radius.circular(32.0),
@@ -39,8 +39,8 @@ class FinishTourView extends StatelessWidget {
                             onPressed: () => model.navigateToHome(),
                             hasImageBackground: false,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(16.0),
+                          const Padding(
+                            padding: EdgeInsets.all(16.0),
                             child: Text(
                               'Persona, has finalizado tu visita a la exposición',
                               textAlign: TextAlign.center,
@@ -62,25 +62,25 @@ class FinishTourView extends StatelessWidget {
                             ),
                             decoration: BoxDecoration(
                               image: const DecorationImage(
-                                image: AssetImage(Assets.SCULPTURE),
+                                image: AssetImage(Assets.sculpture),
                                 fit: BoxFit.cover,
                               ),
                               borderRadius: BorderRadius.circular(32.0),
                               color: Colors.white,
                               border: Border.all(
                                 width: 1.0,
-                                color: CustomColor.ACCENT,
+                                color: CustomColor.accent,
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(16.0),
+                          const Padding(
+                            padding: EdgeInsets.all(16.0),
                             child: Text(
                               'Parece que esta pieza ha sido la que más te ha gustado. Si quieres puedes compartirla en tus redes sociales',
                               textAlign: TextAlign.center,
                             ),
                           ),
-                          SizedBox(height: 24.0)
+                          const SizedBox(height: 24.0)
                         ],
                       ),
                     ),
@@ -88,15 +88,15 @@ class FinishTourView extends StatelessWidget {
                       padding: const EdgeInsets.all(16.0),
                       child: FloatingActionButton.extended(
                         onPressed: () async => await model.navigateToHome(),
-                        icon: Icon(
+                        icon: const Icon(
                           FeatherIcons.share2,
-                          color: CustomColor.TEXT_HIGH,
+                          color: CustomColor.textHigh,
                         ),
-                        backgroundColor: CustomColor.ACCENT,
-                        label: Text(
+                        backgroundColor: CustomColor.accent,
+                        label: const Text(
                           'COMPARTIR',
                           style: TextStyle(
-                            color: CustomColor.TEXT_HIGH,
+                            color: CustomColor.textHigh,
                           ),
                         ),
                       ),
@@ -108,7 +108,7 @@ class FinishTourView extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: Row(
-                        children: <Widget>[
+                        children: const <Widget>[
                           ButtonGrid(
                             title: 'Otros museos',
                           ),
@@ -124,8 +124,8 @@ class FinishTourView extends StatelessWidget {
                     ),
                     TextButton.icon(
                       onPressed: () async => await model.navigateToHome(),
-                      icon: Icon(FeatherIcons.home),
-                      label: Text('INICIO'),
+                      icon: const Icon(FeatherIcons.home),
+                      label: const Text('INICIO'),
                     )
                   ],
                 ),

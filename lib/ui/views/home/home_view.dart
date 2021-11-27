@@ -20,7 +20,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
       builder: (context, HomeViewModel model, child) => Scaffold(
-        backgroundColor: CustomColor.BACKGROUND,
+        backgroundColor: CustomColor.background,
         body: Column(
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
@@ -31,18 +31,18 @@ class _HomeViewState extends State<HomeView> {
                 children: <Widget>[
                   Container(
                     margin: const EdgeInsets.only(bottom: 40.0),
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                         bottomRight: Radius.circular(32.0),
                         bottomLeft: Radius.circular(32.0),
                       ),
                       image: DecorationImage(
-                        image: const AssetImage(Assets.EXPO_MUSEUM),
+                        image: AssetImage(Assets.expoMuseum),
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topCenter,
                     child: TopAppBar(
                       title: 'Exposición',
@@ -53,15 +53,15 @@ class _HomeViewState extends State<HomeView> {
                     child: FloatingActionButton.extended(
                       onPressed: () async =>
                           await model.navigateToCustomizeTour(),
-                      icon: Icon(
+                      icon: const Icon(
                         FeatherIcons.navigation,
-                        color: CustomColor.TEXT_HIGH,
+                        color: CustomColor.textHigh,
                       ),
-                      backgroundColor: CustomColor.ACCENT,
-                      label: Text(
+                      backgroundColor: CustomColor.accent,
+                      label: const Text(
                         'INICIAR',
                         style: TextStyle(
-                          color: CustomColor.TEXT_HIGH,
+                          color: CustomColor.textHigh,
                         ),
                       ),
                     ),
@@ -91,7 +91,7 @@ class _HomeViewState extends State<HomeView> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: model.isBusy
-                    ? CircularProgressIndicator()
+                    ? const CircularProgressIndicator()
                     : Wrap(
                         children: [
                           ...model.listLanguages

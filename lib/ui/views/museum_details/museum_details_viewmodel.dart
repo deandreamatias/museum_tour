@@ -14,10 +14,10 @@ class MuseumDetailsViewModel extends BaseViewModel {
 
   Museum? get museum => _museum;
   String get museumContact =>
-      _museum?.telephone ?? '' + '\n' + (_museum?.email ?? '');
+      _museum?.telephone ?? '' '\n' + (_museum?.email ?? '');
 
   Future<void> navigateToHome() async {
-    await appRouter.push(HomeRoute());
+    await appRouter.push(const HomeRoute());
   }
 
   Future<void> loadMuseumInfo() async {

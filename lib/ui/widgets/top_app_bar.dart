@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:museum_tour/app/constants.dart';
+
+import '../../app/constants.dart';
 
 class TopAppBar extends StatelessWidget {
   const TopAppBar({
@@ -19,10 +20,10 @@ class TopAppBar extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         gradient: hasImageBackground
-            ? LinearGradient(
+            ? const LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [CustomColor.TEXT_HIGH, Colors.transparent],
+                colors: [CustomColor.textHigh, Colors.transparent],
               )
             : null,
       ),
@@ -34,7 +35,7 @@ class TopAppBar extends StatelessWidget {
                   icon: const Icon(FeatherIcons.home),
                   onPressed: () async => await onPressed!(),
                   color:
-                      hasImageBackground ? Colors.white : CustomColor.TEXT_HIGH,
+                      hasImageBackground ? Colors.white : CustomColor.textHigh,
                 )
               : null,
           backgroundColor: Colors.transparent,
@@ -42,7 +43,7 @@ class TopAppBar extends StatelessWidget {
           title: Text(
             title,
             style: TextStyle(
-              color: hasImageBackground ? Colors.white : CustomColor.TEXT_HIGH,
+              color: hasImageBackground ? Colors.white : CustomColor.textHigh,
             ),
           ),
           centerTitle: true,

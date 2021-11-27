@@ -20,17 +20,17 @@ class ChipCustom extends StatelessWidget {
     return FilterChip(
       label: Text(
         title,
-        style: TextStyle(color: CustomColor.TEXT_MEDIUM),
+        style: const TextStyle(color: CustomColor.textMedium),
       ),
       onSelected: onSelected,
       selected: selected,
       showCheckmark: false,
       backgroundColor: backgroundColor,
-      selectedColor: CustomColor.ACCENT.withOpacity(0.6),
+      selectedColor: CustomColor.accent.withOpacity(0.6),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(32.0),
         side: BorderSide(
-          color: selected ? Colors.transparent : CustomColor.ACCENT,
+          color: selected ? Colors.transparent : CustomColor.accent,
         ),
       ),
     );

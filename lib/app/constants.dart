@@ -1,26 +1,26 @@
 import 'package:flutter/widgets.dart';
 
 class CustomColor {
-  static const Color ACCENT = Color(0xFFF5CB5C);
-  static const Color BACKGROUND = Color(0xFFF6F3E1);
-  static const Color TEXT_HIGH = Color(0xFF242423);
-  static const Color TEXT_MEDIUM = Color(0xFF333533);
+  static const Color accent = Color(0xFFF5CB5C);
+  static const Color background = Color(0xFFF6F3E1);
+  static const Color textHigh = Color(0xFF242423);
+  static const Color textMedium = Color(0xFF333533);
 }
 
 class Assets {
-  static const String EXPO_MUSEUM = 'assets/images/expo_museum.jpg';
-  static const String INFO_MUSEUM = 'assets/images/info_museum.jpg';
-  static const String SCULPTURE = 'assets/images/sculpture.jpg';
-  static const String EXPOSITION_PATH = 'assets/json/exposition.json';
-  static const String LANGUAGES_PATH = 'assets/json/languages.json';
-  static const String MUSEUMS_PATH = 'assets/json/museums.json';
-  static const String MAIN_MUSEUM_PATH = 'assets/json/main_museum.json';
+  static const String expoMuseum = 'assets/images/expo_museum.jpg';
+  static const String infoMuseum = 'assets/images/info_museum.jpg';
+  static const String sculpture = 'assets/images/sculpture.jpg';
+  static const String expositionPath = 'assets/json/exposition.json';
+  static const String languagesPath = 'assets/json/languages.json';
+  static const String museumsPath = 'assets/json/museums.json';
+  static const String mainMuesumPath = 'assets/json/main_museum.json';
 }
 
 class DbKeys {
-  static const String PREFS_BOX = 'preferences';
-  static const String LANGUAGE_KEY = 'language';
-  static const String NAME_KEY = 'name';
-  static const String TEXT_SIZE_KEY = 'text_size';
-  static const String AUTOPLAY_KEY = 'autoplay';
+  static const String prefsBox = 'preferences';
+  static const String languageKey = 'language';
+  static const String nameKey = 'name';
+  static const String textSizeKey = 'text_size';
+  static const String autoplayKey = 'autoplay';
 }

@@ -4,8 +4,8 @@ import '../models/time.dart';
 
 @lazySingleton
 class TimeService {
-  List<Time> _listTime = <Time>[];
-  Stopwatch _stopwatch = Stopwatch();
+  final List<Time> _listTime = <Time>[];
+  final Stopwatch _stopwatch = Stopwatch();
 
   Stopwatch get stopwatch => _stopwatch;
 
@@ -22,8 +22,9 @@ class TimeService {
   void saveTime(int expoId, {bool restartTime = false}) {
     int _indexExpo = -1;
 
-    if (_listTime.isNotEmpty)
+    if (_listTime.isNotEmpty) {
       _indexExpo = _listTime.indexWhere((item) => item.expoId == expoId);
+    }
 
     if (_indexExpo == -1) {
       _listTime.add(Time(

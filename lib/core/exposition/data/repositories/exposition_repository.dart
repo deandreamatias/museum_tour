@@ -19,44 +19,44 @@ class ExpositionRepository implements IExpositionRepository {
   @override
   Future<Exposition> getExposition() async {
     final result =
-        await _mediaService.getJsonFromLocalFile(Assets.EXPOSITION_PATH);
+        await _mediaService.getJsonFromLocalFile(Assets.expositionPath);
     return ExpositionModel.fromJson(json.decode(result));
   }
 
   @override
   bool getAutoplay() {
-    return _hiveService.getData<bool>(DbKeys.AUTOPLAY_KEY) ?? false;
+    return _hiveService.getData<bool>(DbKeys.autoplayKey) ?? false;
   }
 
   @override
   String getLanguage() {
-    return _hiveService.getData<String>(DbKeys.LANGUAGE_KEY) ?? '';
+    return _hiveService.getData<String>(DbKeys.languageKey) ?? '';
   }
 
   @override
   String getName() {
-    return _hiveService.getData<String>(DbKeys.NAME_KEY) ?? '';
+    return _hiveService.getData<String>(DbKeys.nameKey) ?? '';
   }
 
   @override
   void saveAutoplay(bool autoplay) {
-    _hiveService.saveData<bool>(DbKeys.AUTOPLAY_KEY, autoplay);
+    _hiveService.saveData<bool>(DbKeys.autoplayKey, autoplay);
   }
 
   @override
   void saveLanguage(String langCode) {
-    _hiveService.saveData<String>(DbKeys.LANGUAGE_KEY, langCode);
+    _hiveService.saveData<String>(DbKeys.languageKey, langCode);
   }
 
   @override
   void saveName(String name) {
-    _hiveService.saveData<String>(DbKeys.NAME_KEY, name);
+    _hiveService.saveData<String>(DbKeys.nameKey, name);
   }
 
   @override
   Future<LanguagesModel> getAvaliableLanguages() async {
     final result =
-        await _mediaService.getJsonFromLocalFile(Assets.LANGUAGES_PATH);
+        await _mediaService.getJsonFromLocalFile(Assets.languagesPath);
     return LanguagesModel.fromJson(json.decode(result));
   }
 }

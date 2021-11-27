@@ -1,10 +1,10 @@
 import 'package:injectable/injectable.dart';
-import 'package:museum_tour/core/exposition/domain/models/exposition.dart';
-import 'package:museum_tour/core/exposition/domain/models/exposition_item.dart';
-import 'package:museum_tour/core/exposition/domain/use_cases/get_exposition_use_case.dart';
 
 import '../../../../app/locator.dart';
+import '../models/exposition.dart';
+import '../models/exposition_item.dart';
 import '../models/time.dart';
+import '../use_cases/get_exposition_use_case.dart';
 import 'time_service.dart';
 
 @lazySingleton

@@ -10,8 +10,8 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<SplashViewModel>.nonReactive(
-      builder: (context, SplashViewModel model, child) => Scaffold(
-        backgroundColor: CustomColor.BACKGROUND,
+      builder: (context, SplashViewModel model, child) => const Scaffold(
+        backgroundColor: CustomColor.background,
         body: Center(child: CircularProgressIndicator()),
       ),
       createNewModelOnInsert: true,

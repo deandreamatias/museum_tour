@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:museum_tour/ui/smart_widgets/expo_indicator/expo_indicator.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../../app/constants.dart';
+import '../../../smart_widgets/expo_indicator/expo_indicator.dart';
 import '../../../widgets/chip_custom.dart';
 import '../../../widgets/top_app_bar.dart';
 import 'customize_tour_viewmodel.dart';
@@ -17,9 +17,9 @@ class CustomizeTourView extends StatelessWidget {
       builder: (context, CustomizeTourViewModel model, child) => WillPopScope(
         onWillPop: model.resetTour,
         child: Scaffold(
-          backgroundColor: CustomColor.BACKGROUND,
+          backgroundColor: CustomColor.background,
           body: LayoutBuilder(
-            builder: (context, constraints) => Container(
+            builder: (context, constraints) => SizedBox(
               height: constraints.maxHeight,
               child: Stack(
                 alignment: Alignment.bottomCenter,
@@ -34,7 +34,7 @@ class CustomizeTourView extends StatelessWidget {
                             children: <Widget>[
                               Container(
                                 margin: const EdgeInsets.only(bottom: 40.0),
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   borderRadius: BorderRadius.only(
                                     bottomRight: Radius.circular(32.0),
                                     bottomLeft: Radius.circular(32.0),
@@ -60,21 +60,21 @@ class CustomizeTourView extends StatelessWidget {
                                         textCapitalization:
                                             TextCapitalization.words,
                                         controller: model.textEditingController,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                           labelText: 'Tu nombre',
                                           border: OutlineInputBorder(),
                                         ),
                                       ),
                                     ),
                                     const SizedBox(height: 16.0),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
+                                    const Padding(
+                                      padding: EdgeInsets.symmetric(
                                           horizontal: 16.0),
                                       child: Text(
                                           'Idioma de textos y audios guía'),
                                     ),
                                     model.isBusy
-                                        ? CircularProgressIndicator()
+                                        ? const CircularProgressIndicator()
                                         : Wrap(
                                             children: [
                                               ...model.listLanguages
@@ -89,8 +89,8 @@ class CustomizeTourView extends StatelessWidget {
                                             ],
                                           ),
                                     const SizedBox(height: 16.0),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
+                                    const Padding(
+                                      padding: EdgeInsets.symmetric(
                                           horizontal: 16.0),
                                       child: Text('Tamaño de los textos'),
                                     ),
@@ -103,7 +103,7 @@ class CustomizeTourView extends StatelessWidget {
                                             WrapCrossAlignment.start,
                                         alignment: WrapAlignment.start,
                                         spacing: 8.0,
-                                        children: <Widget>[
+                                        children: const <Widget>[
                                           ChipCustom(
                                             title: 'Pequeño (x0.75)',
                                             selected: true,
@@ -123,16 +123,16 @@ class CustomizeTourView extends StatelessWidget {
                                     const SizedBox(height: 16.0),
                                     CheckboxListTile(
                                       value: model.autoplay,
-                                      checkColor: CustomColor.TEXT_MEDIUM,
-                                      activeColor: CustomColor.ACCENT,
+                                      checkColor: CustomColor.textMedium,
+                                      activeColor: CustomColor.accent,
                                       onChanged: (bool? value) => {},
                                       controlAffinity:
                                           ListTileControlAffinity.leading,
-                                      title: Text(
+                                      title: const Text(
                                         'Reproducir audios guía automáticamente. (Necesario auriculares)',
                                       ),
                                     ),
-                                    SizedBox(height: 32.0)
+                                    const SizedBox(height: 32.0)
                                   ],
                                 ),
                               ),
@@ -141,15 +141,15 @@ class CustomizeTourView extends StatelessWidget {
                                 child: FloatingActionButton.extended(
                                   onPressed: () async =>
                                       await model.navigateToExpositionTour(),
-                                  icon: Icon(
+                                  icon: const Icon(
                                     FeatherIcons.navigation2,
-                                    color: CustomColor.TEXT_HIGH,
+                                    color: CustomColor.textHigh,
                                   ),
-                                  backgroundColor: CustomColor.ACCENT,
-                                  label: Text(
+                                  backgroundColor: CustomColor.accent,
+                                  label: const Text(
                                     'IR A EXPOSICIÓN',
                                     style: TextStyle(
-                                      color: CustomColor.TEXT_HIGH,
+                                      color: CustomColor.textHigh,
                                     ),
                                   ),
                                 ),
@@ -159,7 +159,7 @@ class CustomizeTourView extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Column(
-                              children: <Widget>[
+                              children: const <Widget>[
                                 Text(
                                   'Estos datos no son usados para ningún fin fuera de la app de este dispositivo',
                                   textAlign: TextAlign.center,
@@ -180,13 +180,13 @@ class CustomizeTourView extends StatelessWidget {
                         begin: Alignment.bottomCenter,
                         end: Alignment.topCenter,
                         colors: [
-                          CustomColor.BACKGROUND,
-                          CustomColor.BACKGROUND.withOpacity(0.1)
+                          CustomColor.background,
+                          CustomColor.background.withOpacity(0.1)
                         ],
                       ),
                     ),
                   ),
-                  ExpoIndicator()
+                  const ExpoIndicator()
                 ],
               ),
             ),

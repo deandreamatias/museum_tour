@@ -1,9 +1,9 @@
 import 'package:injectable/injectable.dart';
-import 'package:museum_tour/app/locator.dart';
-import 'package:museum_tour/core/exposition/domain/models/settings.dart';
-import 'package:museum_tour/core/exposition/domain/use_cases/save_language_use_case.dart';
 
+import '../../../../app/locator.dart';
+import '../models/settings.dart';
 import '../repositories/i_exposition_repository.dart';
+import 'save_language_use_case.dart';
 
 @injectable
 class SaveSettingsUseCase {

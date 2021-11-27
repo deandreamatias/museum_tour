@@ -13,13 +13,13 @@ class ExpositionTourViewModel extends BaseViewModel {
 
   Future navigateToHome() async {
     _tourService.finishExpo();
-    await appRouter.push(HomeRoute());
+    await appRouter.push(const HomeRoute());
   }
 
   Future continueExpo() async {
     if (_tourService.lastItem) {
       _tourService.finishExpo(getFavItem: true);
-      await appRouter.push(FinishTourRoute());
+      await appRouter.push(const FinishTourRoute());
     } else {
       setBusy(true);
       _tourService.navigateExpo();
