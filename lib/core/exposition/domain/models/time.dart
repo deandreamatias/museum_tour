@@ -1,9 +1,11 @@
 class Time {
   final int expoId;
-  final int time;
+
+  /// Expo time in miliseconds
+  final int elapsedMs;
 
   Time({
     required this.expoId,
-    required this.time,
+    required this.elapsedMs,
   });
 }
