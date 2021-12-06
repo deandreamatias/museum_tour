@@ -19,7 +19,6 @@ jobs:
         run: flutter test --coverage
       - name: Coverage tests (codecov)
         uses: codecov/codecov-action@v2
-        if: matrix.os == 'ubuntu-latest'
         with:
           token: ${{secrets.CODECOV_TOKEN}}
           files: ./coverage/lcov.info
