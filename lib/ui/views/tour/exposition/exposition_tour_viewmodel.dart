@@ -17,7 +17,7 @@ class ExpositionTourViewModel extends BaseViewModel {
   }
 
   Future continueExpo() async {
-    if (_tourService.lastItem) {
+    if (_tourService.isLastItem) {
       _tourService.finishExpo(getFavItem: true);
       await appRouter.push(const FinishTourRoute());
     } else {
@@ -28,7 +28,7 @@ class ExpositionTourViewModel extends BaseViewModel {
   }
 
   void backExpo() async {
-    if (_tourService.firstItem) {
+    if (_tourService.isFirstItem) {
       _tourService.finishExpo();
       appRouter.pop();
     } else {

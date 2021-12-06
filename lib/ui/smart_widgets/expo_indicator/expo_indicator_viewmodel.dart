@@ -7,7 +7,7 @@ class ExpoIndicatorViewModel extends BaseViewModel {
   final _tourService = locator<TourService>();
 
   int get indicator => _tourService.indicator;
-  int get lengthItem => _tourService.lengthItem;
+  int get lengthItem => _tourService.lengthExpositionItems;
   int get lengthIndicator => _tourService.lengthIndicator;
 
   Future getExpoItem() async {
