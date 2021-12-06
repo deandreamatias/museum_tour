@@ -65,9 +65,8 @@ class TimeService {
     if (_listTime.isNotEmpty) {
       _listTime.sort((a, b) => a.elapsedMs.compareTo(b.elapsedMs));
       return _listTime.last;
-    } else {
-      throw 'List time is empty';
     }
+    throw UnimplementedError('List time is empty');
   }
 
   void _resetTime() {
