@@ -103,7 +103,7 @@ class TourService {
     assert(
       newIndex != null && newIndex >= 0 && newIndex <= lengthIndicator ||
           newIndex == null,
-      'Error to use newIndex: $newIndex',
+      'Error to use newIndex: $newIndex. LengthIndicator is: $lengthIndicator',
     );
     if (newIndex != null && newIndex >= 0 && newIndex <= lengthIndicator) {
       _indicator = newIndex;

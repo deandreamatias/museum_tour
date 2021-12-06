@@ -21,11 +21,12 @@ void main() {
   );
 
   final faker = Faker();
-  Exposition _generateExposition({bool idIsIndex = false}) => Exposition(
+  Exposition _generateExposition({bool idIsIndex = false, int? minLength}) =>
+      Exposition(
         id: faker.randomGenerator.integer(9999).toString(),
         update: DateTime.now().toIso8601String(),
         items: List.generate(
-          faker.randomGenerator.integer(20, min: 1),
+          faker.randomGenerator.integer(20, min: minLength ?? 1),
           (index) => ExpositionItem(
             id: idIsIndex ? index : faker.randomGenerator.integer(9999),
             name: faker.randomGenerator.string(20),
@@ -100,7 +101,7 @@ void main() {
   });
   group('jumpTpExpo -', () {
     test('indicator will be equal to new expo index', () async {
-      final exposition = _generateExposition();
+      final exposition = _generateExposition(minLength: 5);
       when(getExpositionUseCase()).thenAnswer((_) async => exposition);
       await tourService.getExpoItems();
 
@@ -147,7 +148,7 @@ void main() {
       expect(result, true);
     });
     test('will saveFav item when call', () async {
-      final exposition = _generateExposition(idIsIndex: true);
+      final exposition = _generateExposition(idIsIndex: true, minLength: 5);
       when(getExpositionUseCase()).thenAnswer((_) async => exposition);
       when(timeService.getHigherTime()).thenAnswer(
         (_) => Time(expoId: 5, elapsedMs: 500),
