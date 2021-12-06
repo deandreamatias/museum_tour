@@ -34,6 +34,7 @@ dev_dependencies:
   flutter_launcher_icons: ^0.9.2
   json_serializable: ^6.0.1
   flutter_lints: ^1.0.4
+  faker: ^2.0.0
 
 flutter_native_splash:
   image: assets/images/icon_foreground.png
