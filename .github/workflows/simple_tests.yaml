@@ -12,7 +12,13 @@ jobs:
         with:
           channel: "stable"
       - run: flutter pub get
+      - run: flutter pub run build_runner build
       - name: code analyze
         run: flutter analyze
-      - name: unit tests
-        run: flutter test
+      - name: unit tests 
+        run: flutter test --coverage
+      - uses: codecov/codecov-action@v1.0.2
+        if: matrix.os == 'ubuntu-latest'
+        with:
+          token: ${{secrets.CODECOV_TOKEN}} #required
+          file: ./coverage/lcov.info #optional
