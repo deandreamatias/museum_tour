@@ -2,6 +2,8 @@
 
 ## Museum tour - App to create a custom tour to a museum or exposition
 
+[![Simple tests](https://github.com/deandreamatias/museum_tour/actions/workflows/simple_tests.yaml/badge.svg)](https://github.com/deandreamatias/museum_tour/actions/workflows/simple_tests.yaml)
+[![codecov](https://codecov.io/gh/deandreamatias/museum_tour/branch/main/graph/badge.svg?token=UME5U3Y9VH)](https://codecov.io/gh/deandreamatias/museum_tour)
 [![Releases](https://img.shields.io/github/v/release/deandreamatias/museum_app)](https://github.com/deandreamatias/museum_app/releases)
 [![Paypal donate](https://img.shields.io/badge/paypal-donate-blue)](https://paypal.me/deandreamatias)
 
