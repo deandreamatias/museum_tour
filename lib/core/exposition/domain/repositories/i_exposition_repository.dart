@@ -1,5 +1,5 @@
-import '../../data/models/languages_model.dart';
 import '../models/exposition.dart';
+import '../models/languages.dart';
 
 abstract class IExpositionRepository {
   Future<Exposition> getExposition();
@@ -8,6 +8,6 @@ abstract class IExpositionRepository {
   String getName();
   void saveName(String name);
   String getLanguage();
-  Future<LanguagesModel> getAvaliableLanguages();
+  Future<Languages> getAvaliableLanguages();
   void saveLanguage(String langCode);
 }
