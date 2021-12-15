@@ -10,6 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   stacked: ^2.2.7
   get_it: ^7.2.0
   injectable: ^1.5.0
@@ -35,6 +37,7 @@ dev_dependencies:
   json_serializable: ^6.1.1
   flutter_lints: ^1.0.4
   faker: ^2.0.0
+  intl_utils: ^2.5.1
 
 flutter_native_splash:
   image: assets/images/icon_foreground.png
@@ -56,3 +59,8 @@ flutter:
     - family: Quicksand
       fonts:
         - asset: assets/fonts/quicksand.ttf
+        
+flutter_intl:
+  enabled: true
+  main_locale: es
+  arb_dir: lib/res/l10n

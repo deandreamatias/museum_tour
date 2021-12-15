@@ -54,6 +54,7 @@ unlinked_spec.ds
 **/*.gr.dart
 **/*.g.dart
 **/*.mocks.dart
+lib/generated
 
 # Android related
 **/android/**/gradle-wrapper.jar
