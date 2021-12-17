@@ -6,16 +6,17 @@ jobs:
     name: run unit tests
     runs-on: ubuntu-latest
     steps:
-      - name: configure enviroment
+      - name: Configure enviroment
         uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1
         with:
           channel: "stable"
       - run: flutter pub get
       - run: flutter pub run build_runner build
-      - name: code analyze
+      - run: flutter pub run intl_utils:generate
+      - name: Code analyze
         run: flutter analyze
-      - name: unit tests 
+      - name: Unit tests 
         run: flutter test --coverage
       - name: Coverage tests (codecov)
         uses: codecov/codecov-action@v2
