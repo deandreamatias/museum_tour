@@ -19,7 +19,7 @@ This project has been built using the [Flutter](https://flutter.dev/) framework,
 - **Digital tour of a exposition**
 - **Configure tour with name, language and text size**
 - **Get your favorite exposition piece and share**
-- [Coming soon...](https://trello.com/b/T5vqHIvY)
+- **Roadmap in [public Trello](https://trello.com/b/T5vqHIvY)**
 
 ## Build and run
 
@@ -41,7 +41,7 @@ Unit tests: `flutter test`
 
 ## Built with
 
-- [Flutter](https://flutter.dev/) - Beautiful native apps in record time.
+- [Flutter](https://flutter.dev/) - Build apps for any screen.
 - [Android Studio](https://developer.android.com/studio/index.html/) - Tools for building apps for Android devices.
 - [Visual Studio Code](https://code.visualstudio.com/) - Code editing. Redefined.
 
