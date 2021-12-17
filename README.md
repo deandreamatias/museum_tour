@@ -39,12 +39,6 @@ CLI Debug: `flutter run`
 
 Unit tests: `flutter test`
 
-## Built with
-
-- [Flutter](https://flutter.dev/) - Build apps for any screen.
-- [Android Studio](https://developer.android.com/studio/index.html/) - Tools for building apps for Android devices.
-- [Visual Studio Code](https://code.visualstudio.com/) - Code editing. Redefined.
-
 ## Author
 
 - **Matias de Andrea** - Mobile developer: [Website](https://deandreamatias.com), [GitHub](https://github.com/deandreamatias) and [Twitter](https://twitter.com/deandreamatias).
