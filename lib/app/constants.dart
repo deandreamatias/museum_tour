@@ -1,11 +1,11 @@
 class Assets {
-  static const String expoMuseum = 'assets/images/expo_museum.jpg';
-  static const String infoMuseum = 'assets/images/info_museum.jpg';
-  static const String sculpture = 'assets/images/sculpture.jpg';
-  static const String expositionPath = 'assets/json/exposition.json';
-  static const String languagesPath = 'assets/json/languages.json';
-  static const String museumsPath = 'assets/json/museums.json';
-  static const String mainMuesumPath = 'assets/json/main_museum.json';
+  static const String expoMuseum = 'lib/res/images/expo_museum.jpg';
+  static const String infoMuseum = 'lib/res/images/info_museum.jpg';
+  static const String sculpture = 'lib/res/images/sculpture.jpg';
+  static const String expositionPath = 'lib/res/json/exposition.json';
+  static const String languagesPath = 'lib/res/json/languages.json';
+  static const String museumsPath = 'lib/res/json/museums.json';
+  static const String mainMuesumPath = 'lib/res/json/main_museum.json';
 }
 
 class DbKeys {

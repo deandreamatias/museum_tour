@@ -39,27 +39,28 @@ dev_dependencies:
   intl_utils: ^2.5.1
 
 flutter_native_splash:
-  image: assets/images/icon_foreground.png
+  image: lib/res/images/icon_foreground.png
   color: "F5CB5C"
   
 flutter_icons:
   android: "ic_launcher" 
-  adaptive_icon_foreground: "assets/images/icon_foreground.png"
+  adaptive_icon_foreground: "lib/res/images/icon_foreground.png"
   adaptive_icon_background: "#F5CB5C"
   ios: false
-  image_path: "assets/images/icon_launcher.png"
+  image_path: "lib/res/images/icon_launcher.png"
 
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/
-    - assets/json/
+    - lib/res/images/
+    - lib/res/json/
   fonts:
     - family: Quicksand
       fonts:
-        - asset: assets/fonts/quicksand.ttf
+        - asset: lib/res/fonts/quicksand.ttf
         
 flutter_intl:
   enabled: true
   main_locale: es
   arb_dir: lib/res/l10n
+  preferred-supported-locales: true
