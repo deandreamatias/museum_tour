@@ -5,7 +5,7 @@ import 'package:stacked/stacked.dart';
 import '../../../../app/constants.dart';
 import '../../../../common/common.dart';
 import '../../../../generated/l10n.dart';
-import '../../../smart_widgets/expo_indicator/expo_indicator.dart';
+import '../../../widgets/expo_indicator.dart';
 import '../../../widgets/top_app_bar.dart';
 import 'exposition_tour_viewmodel.dart';
 
@@ -172,7 +172,12 @@ class ExpositionTourView extends StatelessWidget {
                     ),
                   ),
                 ),
-                const ExpoIndicator(),
+                ExpoIndicator(
+                  indicator: model.indicator,
+                  lengthIndicator: model.lengthIndicator,
+                  lengthItem: model.lengthItem,
+                  onDotTap: (index) => model.jumpTo(index),
+                ),
               ],
             ),
           ),

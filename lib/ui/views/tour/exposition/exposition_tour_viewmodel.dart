@@ -10,6 +10,9 @@ class ExpositionTourViewModel extends BaseViewModel {
   final _tourService = locator<TourService>();
 
   ExpositionItem get item => _tourService.getItem();
+  int get indicator => _tourService.indicator;
+  int get lengthItem => _tourService.lengthExpositionItems;
+  int get lengthIndicator => _tourService.lengthIndicator;
 
   Future navigateToHome() async {
     _tourService.finishExpo();
@@ -25,6 +28,12 @@ class ExpositionTourViewModel extends BaseViewModel {
       _tourService.navigateExpo();
       setBusy(false);
     }
+  }
+
+  void jumpTo(int updateIndex) {
+    setBusy(true);
+    _tourService.jumpToExpo(updateIndex);
+    setBusy(false);
   }
 
   void backExpo() async {

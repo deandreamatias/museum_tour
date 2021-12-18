@@ -169,13 +169,13 @@
         },
         "context": "home and customize exposition"
     },
-    "textSizes": "{textSizes, select, small{Pequeño (x0.75)} medium{Médio} big{Grande (x1.5)} extraBig{Extra grande (x2.0)} other{Por defecto}}",
+    "textSizes": "{sizes, select, small{Pequeño (x0.75)} medium{Médio} big{Grande (x1.5)} extraBig{Extra grande (x2.0)} other{Por defecto}}",
     "@textSizes": {
         "description": "A label to language options",
         "placeholders": {
-            "textSizes": {
+            "sizes": {
                 "type": "String",
-                "description": "A language option",
+                "description": "A size option",
                 "example": "small"
             }
         },

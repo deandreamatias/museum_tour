@@ -4,7 +4,7 @@ import 'package:stacked/stacked.dart';
 
 import '../../../../common/common.dart';
 import '../../../../generated/l10n.dart';
-import '../../../smart_widgets/expo_indicator/expo_indicator.dart';
+import '../../../widgets/expo_indicator.dart';
 import '../../../widgets/top_app_bar.dart';
 import 'customize_tour_viewmodel.dart';
 
@@ -14,6 +14,7 @@ class CustomizeTourView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
+      onModelReady: (CustomizeTourViewModel model) => model.initialLoad(),
       builder: (context, CustomizeTourViewModel model, child) => WillPopScope(
         onWillPop: model.resetTour,
         child: Scaffold(
@@ -82,21 +83,27 @@ class CustomizeTourView extends StatelessWidget {
                                     ),
                                     model.isBusy
                                         ? const CircularProgressIndicator()
-                                        : Wrap(
-                                            children: [
-                                              ...model.listLanguages
-                                                  .map(
-                                                    (item) => ChoiceChip(
-                                                      label: Text(S
-                                                          .of(context)
-                                                          .languages(item)
-                                                          .toSentenceCase()),
-                                                      onSelected: (value) => {},
-                                                      selected: false,
-                                                    ),
-                                                  )
-                                                  .toList()
-                                            ],
+                                        : Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 16.0),
+                                            child: Wrap(
+                                              spacing: 8,
+                                              children: [
+                                                ...model.listLanguages
+                                                    .map(
+                                                      (item) => ChoiceChip(
+                                                        label: Text(S
+                                                            .of(context)
+                                                            .languages(item)
+                                                            .toSentenceCase()),
+                                                        onSelected: (value) =>
+                                                            {},
+                                                        selected: false,
+                                                      ),
+                                                    )
+                                                    .toList()
+                                              ],
+                                            ),
                                           ),
                                     const SizedBox(height: 16.0),
                                     Padding(
@@ -212,7 +219,12 @@ class CustomizeTourView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const ExpoIndicator()
+                  if (!model.isBusy)
+                    ExpoIndicator(
+                      indicator: model.indicator,
+                      lengthIndicator: model.lengthIndicator,
+                      lengthItem: model.lengthItem,
+                    )
                 ],
               ),
             ),

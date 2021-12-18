@@ -21,6 +21,9 @@ class CustomizeTourViewModel extends BaseViewModel {
   String get language => _language;
   String get name => _name;
   bool get autoplay => _autoplay;
+  int get indicator => _tourService.indicator;
+  int get lengthItem => _tourService.lengthExpositionItems;
+  int get lengthIndicator => _tourService.lengthIndicator;
   List<String> get textSizes => ['small', 'medium', 'big', 'extraBig'];
   TextEditingController get textEditingController => _textEditingController;
 
@@ -58,6 +61,7 @@ class CustomizeTourViewModel extends BaseViewModel {
 
   void initialLoad() async {
     setBusy(true);
+    await _tourService.getExpoItems();
     _languages = await _getLanguagesUseCase();
     final settings = _getSettingsUseCase();
     _autoplay = settings.autoplay;

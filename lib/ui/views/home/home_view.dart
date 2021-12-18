@@ -86,13 +86,17 @@ class _HomeViewState extends State<HomeView> {
                 child: model.isBusy
                     ? const CircularProgressIndicator()
                     : Wrap(
+                        spacing: 8,
+                        alignment: WrapAlignment.center,
                         children: [
                           ...model.listLanguages
                               .map(
                                 (item) => ChoiceChip(
-                                  label: Text(item),
-                                  onSelected: (value) =>
-                                      value ? model.saveLanguage(item) : null,
+                                  label: Text(S
+                                      .of(context)
+                                      .languages(item)
+                                      .toSentenceCase()),
+                                  onSelected: (value) => {},
                                   selected: false,
                                 ),
                               )
