@@ -21,6 +21,7 @@ class CustomizeTourViewModel extends BaseViewModel {
   String get language => _language;
   String get name => _name;
   bool get autoplay => _autoplay;
+  List<String> get textSizes => ['small', 'medium', 'big', 'extraBig'];
   TextEditingController get textEditingController => _textEditingController;
 
   Languages _languages = Languages();

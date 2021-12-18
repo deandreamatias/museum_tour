@@ -3,6 +3,8 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../../app/constants.dart';
+import '../../../../common/common.dart';
+import '../../../../generated/l10n.dart';
 import '../../../smart_widgets/expo_indicator/expo_indicator.dart';
 import '../../../widgets/top_app_bar.dart';
 import 'exposition_tour_viewmodel.dart';
@@ -46,7 +48,7 @@ class ExpositionTourView extends StatelessWidget {
                               Align(
                                 alignment: Alignment.topCenter,
                                 child: TopAppBar(
-                                  title: model.item.name,
+                                  title: model.item.name.toSentenceCase(),
                                   onPressed: () => model.navigateToHome(),
                                 ),
                               ),
@@ -71,7 +73,8 @@ class ExpositionTourView extends StatelessWidget {
                                   onPressed: () async =>
                                       await model.continueExpo(),
                                   icon: const Icon(FeatherIcons.skipForward),
-                                  label: const Text('CONTINUAR'),
+                                  label: Text(
+                                      S.of(context).btnContinue.toUpperCase()),
                                 ),
                               )
                             ],
@@ -98,20 +101,33 @@ class ExpositionTourView extends StatelessWidget {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
                                             children: <Widget>[
-                                              Text(
-                                                  'Datación: ${model.item.date}'),
+                                              Text(S
+                                                  .of(context)
+                                                  .dating
+                                                  .addTwoDots(model.item.date)
+                                                  .toSentenceCase()),
                                               const SizedBox(height: 4),
-                                              Text(
-                                                  'Técnica: ${model.item.technique}'),
+                                              Text(S
+                                                  .of(context)
+                                                  .technique
+                                                  .addTwoDots(
+                                                      model.item.technique)
+                                                  .toSentenceCase()),
                                               const SizedBox(height: 4),
-                                              Text(
-                                                  'Lugar de procedencia: ${model.item.locale}'),
+                                              Text(S
+                                                  .of(context)
+                                                  .placeOfOrigin
+                                                  .addTwoDots(model.item.locale)
+                                                  .toSentenceCase()),
                                             ],
                                           ),
                                         ),
                                         Column(
                                           children: <Widget>[
-                                            const Text('Audio guía'),
+                                            Text(S
+                                                .of(context)
+                                                .audioGuide
+                                                .toSentenceCase()),
                                             const SizedBox(height: 4),
                                             SizedBox(
                                               height: 40.0,
@@ -128,7 +144,11 @@ class ExpositionTourView extends StatelessWidget {
                                     ),
                                     const SizedBox(height: 8),
                                     Text(
-                                      'Descripción: ${model.item.description}',
+                                      S
+                                          .of(context)
+                                          .description
+                                          .addTwoDots(model.item.description)
+                                          .toSentenceCase(),
                                     ),
                                     const SizedBox(height: 56),
                                   ],

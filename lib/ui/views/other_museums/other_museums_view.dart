@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../../common/common.dart';
+import '../../../generated/l10n.dart';
 import '../../widgets/top_app_bar.dart';
 import 'other_museums_viewmodel.dart';
 
@@ -41,7 +43,8 @@ class _OtherMuseumsViewState extends State<OtherMuseumsView> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             TopAppBar(
-                              title: 'Otros museos',
+                              title:
+                                  S.of(context).otherMuseums.toSentenceCase(),
                               onPressed: () => model.navigateToHome(),
                               hasImageBackground: false,
                             ),
@@ -49,7 +52,10 @@ class _OtherMuseumsViewState extends State<OtherMuseumsView> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 16.0),
                               child: Text(
-                                'Seleccione otros museos en España para más detalles',
+                                S
+                                    .of(context)
+                                    .selectOtherMuseums
+                                    .toSentenceCase(),
                                 style: Theme.of(context).textTheme.subtitle1,
                                 textAlign: TextAlign.center,
                               ),
@@ -82,7 +88,7 @@ class _OtherMuseumsViewState extends State<OtherMuseumsView> {
                         child: FloatingActionButton.extended(
                           onPressed: () async => await model.openLink(),
                           icon: const Icon(FeatherIcons.map),
-                          label: const Text('COMO LLEGAR'),
+                          label: Text(S.of(context).btnHowToGet.toUpperCase()),
                         ),
                       )
                     ],
@@ -96,19 +102,35 @@ class _OtherMuseumsViewState extends State<OtherMuseumsView> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                'Teléfono: ${model.museumSelected.telephone}',
-                              ),
-                              const Text(
-                                'Sitio web',
-                              ),
-                              Text(
-                                'Provincia: ${model.museumSelected.province}',
+                                S
+                                    .of(context)
+                                    .phone
+                                    .addTwoDots(model.museumSelected.telephone)
+                                    .toSentenceCase(),
                               ),
                               Text(
-                                'Tarifas: ${model.museumSelected.price}',
+                                S.of(context).website.toSentenceCase(),
                               ),
                               Text(
-                                'Horarios: ${model.museumSelected.schedules}',
+                                S
+                                    .of(context)
+                                    .province
+                                    .addTwoDots(model.museumSelected.province)
+                                    .toSentenceCase(),
+                              ),
+                              Text(
+                                S
+                                    .of(context)
+                                    .prices
+                                    .addTwoDots(model.museumSelected.price)
+                                    .toSentenceCase(),
+                              ),
+                              Text(
+                                S
+                                    .of(context)
+                                    .schedules
+                                    .addTwoDots(model.museumSelected.schedules)
+                                    .toSentenceCase(),
                               ),
                               const SizedBox(height: 40.0),
                             ],

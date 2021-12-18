@@ -3,6 +3,8 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../app/constants.dart';
+import '../../../common/common.dart';
+import '../../../generated/l10n.dart';
 import '../../widgets/button_grid.dart';
 import '../../widgets/top_app_bar.dart';
 import 'home_viewmodel.dart';
@@ -40,10 +42,10 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     ),
                   ),
-                  const Align(
+                  Align(
                     alignment: Alignment.topCenter,
                     child: TopAppBar(
-                      title: 'Exposición',
+                      title: S.of(context).exposition.toSentenceCase(),
                     ),
                   ),
                   Padding(
@@ -54,7 +56,7 @@ class _HomeViewState extends State<HomeView> {
                       icon: const Icon(
                         FeatherIcons.navigation,
                       ),
-                      label: const Text('INICIAR'),
+                      label: Text(S.of(context).btnStart.toUpperCase()),
                     ),
                   )
                 ],
@@ -66,12 +68,12 @@ class _HomeViewState extends State<HomeView> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   ButtonGrid(
-                    title: 'Información del museo',
+                    title: S.of(context).infoMuseum.toSentenceCase(),
                     onPressed: () async =>
                         await model.navigateToMuseumDetails(),
                   ),
                   ButtonGrid(
-                    title: 'Otros museos',
+                    title: S.of(context).otherMuseums.toSentenceCase(),
                     onPressed: () async => await model.navigateToOtherMuseums(),
                   ),
                 ],

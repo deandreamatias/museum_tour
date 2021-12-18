@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../../../common/common.dart';
+import '../../../../generated/l10n.dart';
 import '../../../smart_widgets/expo_indicator/expo_indicator.dart';
 import '../../../widgets/top_app_bar.dart';
 import 'customize_tour_viewmodel.dart';
@@ -43,7 +45,10 @@ class CustomizeTourView extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     TopAppBar(
-                                      title: 'Personalizar tu guía',
+                                      title: S
+                                          .of(context)
+                                          .customizeYourGuide
+                                          .toSentenceCase(),
                                       onPressed: () => model.navigateToHome(),
                                       hasImageBackground: false,
                                     ),
@@ -57,18 +62,23 @@ class CustomizeTourView extends StatelessWidget {
                                         textCapitalization:
                                             TextCapitalization.words,
                                         controller: model.textEditingController,
-                                        decoration: const InputDecoration(
-                                          labelText: 'Tu nombre',
-                                          border: OutlineInputBorder(),
+                                        decoration: InputDecoration(
+                                          labelText: S
+                                              .of(context)
+                                              .yourName
+                                              .toSentenceCase(),
+                                          border: const OutlineInputBorder(),
                                         ),
                                       ),
                                     ),
                                     const SizedBox(height: 16.0),
-                                    const Padding(
-                                      padding: EdgeInsets.symmetric(
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
                                           horizontal: 16.0),
-                                      child: Text(
-                                          'Idioma de textos y audios guía'),
+                                      child: Text(S
+                                          .of(context)
+                                          .languageSelect
+                                          .toSentenceCase()),
                                     ),
                                     model.isBusy
                                         ? const CircularProgressIndicator()
@@ -77,7 +87,10 @@ class CustomizeTourView extends StatelessWidget {
                                               ...model.listLanguages
                                                   .map(
                                                     (item) => ChoiceChip(
-                                                      label: Text(item),
+                                                      label: Text(S
+                                                          .of(context)
+                                                          .languages(item)
+                                                          .toSentenceCase()),
                                                       onSelected: (value) => {},
                                                       selected: false,
                                                     ),
@@ -86,10 +99,13 @@ class CustomizeTourView extends StatelessWidget {
                                             ],
                                           ),
                                     const SizedBox(height: 16.0),
-                                    const Padding(
-                                      padding: EdgeInsets.symmetric(
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
                                           horizontal: 16.0),
-                                      child: Text('Tamaño de los textos'),
+                                      child: Text(S
+                                          .of(context)
+                                          .textSizeSelect
+                                          .toSentenceCase()),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
@@ -102,24 +118,30 @@ class CustomizeTourView extends StatelessWidget {
                                         spacing: 8.0,
                                         children: <Widget>[
                                           ChoiceChip(
-                                            label:
-                                                const Text('Pequeño (x0.75)'),
+                                            label: Text(S
+                                                .of(context)
+                                                .textSizes(model.textSizes[0])),
                                             onSelected: (value) => {},
                                             selected: false,
                                           ),
                                           ChoiceChip(
-                                            label: const Text('Médio'),
+                                            label: Text(S
+                                                .of(context)
+                                                .textSizes(model.textSizes[1])),
                                             onSelected: (value) => {},
                                             selected: true,
                                           ),
                                           ChoiceChip(
-                                            label: const Text('Grande (x1.5)'),
+                                            label: Text(S
+                                                .of(context)
+                                                .textSizes(model.textSizes[2])),
                                             onSelected: (value) => {},
                                             selected: false,
                                           ),
                                           ChoiceChip(
-                                            label: const Text(
-                                                'Extra grande (x2.0)'),
+                                            label: Text(S
+                                                .of(context)
+                                                .textSizes(model.textSizes[3])),
                                             onSelected: (value) => {},
                                             selected: false,
                                           ),
@@ -132,8 +154,11 @@ class CustomizeTourView extends StatelessWidget {
                                       onChanged: (bool? value) => {},
                                       controlAffinity:
                                           ListTileControlAffinity.leading,
-                                      title: const Text(
-                                        'Reproducir audios guía automáticamente. (Necesario auriculares)',
+                                      title: Text(
+                                        S
+                                            .of(context)
+                                            .automaticPlaySelect
+                                            .toSentenceCase(),
                                       ),
                                     ),
                                     const SizedBox(height: 32.0)
@@ -146,7 +171,10 @@ class CustomizeTourView extends StatelessWidget {
                                   onPressed: () async =>
                                       await model.navigateToExpositionTour(),
                                   icon: const Icon(FeatherIcons.navigation2),
-                                  label: const Text('IR A EXPOSICIÓN'),
+                                  label: Text(S
+                                      .of(context)
+                                      .btnGoToExposition
+                                      .toUpperCase()),
                                 ),
                               )
                             ],
@@ -154,12 +182,12 @@ class CustomizeTourView extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Column(
-                              children: const <Widget>[
+                              children: <Widget>[
                                 Text(
-                                  'Estos datos no son usados para ningún fin fuera de la app de este dispositivo',
+                                  S.of(context).dataSafeInfo.toSentenceCase(),
                                   textAlign: TextAlign.center,
                                 ),
-                                SizedBox(height: 40.0),
+                                const SizedBox(height: 40.0),
                               ],
                             ),
                           ),

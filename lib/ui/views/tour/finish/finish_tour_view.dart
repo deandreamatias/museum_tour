@@ -3,6 +3,8 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../../app/constants.dart';
+import '../../../../common/common.dart';
+import '../../../../generated/l10n.dart';
 import '../../../widgets/button_grid.dart';
 import '../../../widgets/top_app_bar.dart';
 import 'finish_tour_viewmodel.dart';
@@ -34,14 +36,18 @@ class FinishTourView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           TopAppBar(
-                            title: 'Fin de la exposición',
+                            title:
+                                S.of(context).finishExposition.toSentenceCase(),
                             onPressed: () => model.navigateToHome(),
                             hasImageBackground: false,
                           ),
-                          const Padding(
-                            padding: EdgeInsets.all(16.0),
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
                             child: Text(
-                              'Persona, has finalizado tu visita a la exposición',
+                              S
+                                  .of(context)
+                                  .youFinishExposition('Persona')
+                                  .toSentenceCase(),
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -52,7 +58,7 @@ class FinishTourView extends StatelessWidget {
                             margin: const EdgeInsets.all(8.0),
                             child: Center(
                               child: Text(
-                                model.expoFavItem?.name ?? '',
+                                model.expoFavItem?.name.toSentenceCase() ?? '',
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline5!
@@ -72,10 +78,13 @@ class FinishTourView extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.all(16.0),
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
                             child: Text(
-                              'Parece que esta pieza ha sido la que más te ha gustado. Si quieres puedes compartirla en tus redes sociales',
+                              S
+                                  .of(context)
+                                  .favoriteExpositionPiece
+                                  .toSentenceCase(),
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -88,7 +97,7 @@ class FinishTourView extends StatelessWidget {
                       child: FloatingActionButton.extended(
                         onPressed: () async => await model.navigateToHome(),
                         icon: const Icon(FeatherIcons.share2),
-                        label: const Text('COMPARTIR'),
+                        label: Text(S.of(context).btnShare.toUpperCase()),
                       ),
                     )
                   ],
@@ -98,14 +107,14 @@ class FinishTourView extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: Row(
-                        children: const <Widget>[
+                        children: <Widget>[
                           ButtonGrid(
-                            title: 'Otros museos',
+                            title: S.of(context).otherMuseums.toSentenceCase(),
                           ),
-                          SizedBox(width: 8.0),
+                          const SizedBox(width: 8.0),
                           Expanded(
                             child: Text(
-                              'También puedes ver donde se encuentran otros museos de historia',
+                              S.of(context).findOtherMuseums.toSentenceCase(),
                               textAlign: TextAlign.center,
                             ),
                           )
@@ -115,7 +124,7 @@ class FinishTourView extends StatelessWidget {
                     TextButton.icon(
                       onPressed: () async => await model.navigateToHome(),
                       icon: const Icon(FeatherIcons.home),
-                      label: const Text('INICIO'),
+                      label: Text(S.of(context).btnHome.toUpperCase()),
                     )
                   ],
                 ),

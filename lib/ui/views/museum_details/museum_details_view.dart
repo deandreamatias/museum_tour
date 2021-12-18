@@ -3,6 +3,8 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../app/constants.dart';
+import '../../../common/common.dart';
+import '../../../generated/l10n.dart';
 import '../../widgets/button_grid.dart';
 import '../../widgets/dialog_museum.dart';
 import '../../widgets/top_app_bar.dart';
@@ -58,7 +60,7 @@ class _MuseumDetailsViewState extends State<MuseumDetailsView> {
                       onPressed: () async =>
                           await model.openLink(isWebsite: false),
                       icon: const Icon(FeatherIcons.map),
-                      label: const Text('COMO LLEGAR'),
+                      label: Text(S.of(context).btnHowToGet.toUpperCase()),
                     ),
                   )
                 ],
@@ -72,21 +74,21 @@ class _MuseumDetailsViewState extends State<MuseumDetailsView> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       ButtonGrid(
-                        title: 'Horarios',
+                        title: S.of(context).schedules.toSentenceCase(),
                         onPressed: () => showDialog(
                           context: context,
                           builder: (context) => DialogMuseum(
-                            title: 'Horarios',
+                            title: S.of(context).schedules.toSentenceCase(),
                             content: model.museum?.schedules ?? '',
                           ),
                         ),
                       ),
                       ButtonGrid(
-                        title: 'Tarifas',
+                        title: S.of(context).prices.toSentenceCase(),
                         onPressed: () => showDialog(
                           context: context,
                           builder: (context) => DialogMuseum(
-                            title: 'Tarifas',
+                            title: S.of(context).prices.toSentenceCase(),
                             content: model.museum?.price ?? '',
                           ),
                         ),
@@ -97,17 +99,17 @@ class _MuseumDetailsViewState extends State<MuseumDetailsView> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       ButtonGrid(
-                        title: 'Contacto',
+                        title: S.of(context).contact.toSentenceCase(),
                         onPressed: () => showDialog(
                           context: context,
                           builder: (context) => DialogMuseum(
-                            title: 'Contacto',
+                            title: S.of(context).contact.toSentenceCase(),
                             content: model.museumContact,
                           ),
                         ),
                       ),
                       ButtonGrid(
-                        title: 'Sitio web',
+                        title: S.of(context).website.toSentenceCase(),
                         onPressed: () => model.openLink(),
                       ),
                     ],
