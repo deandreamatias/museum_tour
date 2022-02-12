@@ -1,5 +1,5 @@
 {
-    "@@locale": "es",
+    "@@locale": "fr",
     "btnStart": "iniciar",
     "@btnStart": {
         "description": "A label to start button"
@@ -169,7 +169,7 @@
         },
         "context": "home and customize exposition"
     },
-    "textSizes": "{sizes, select, small{pequeño (x0.75)} medium{médio} big{grande (x1.5)} extraBig{extra grande (x2.0)} other{por defecto}}",
+    "textSizes": "{sizes, select, small{Pequeño (x0.75)} medium{Médio} big{Grande (x1.5)} extraBig{Extra grande (x2.0)} other{Por defecto}}",
     "@textSizes": {
         "description": "A label to language options",
         "placeholders": {

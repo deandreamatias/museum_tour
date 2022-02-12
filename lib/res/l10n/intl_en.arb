@@ -1,86 +1,86 @@
 {
-    "@@locale": "es",
-    "btnStart": "iniciar",
+    "@@locale": "en",
+    "btnStart": "start",
     "@btnStart": {
         "description": "A label to start button"
     },
-    "btnHowToGet": "como llegar",
+    "btnHowToGet": "how to get",
     "@btnHowToGet": {
         "description": "A label to open map button"
     },
-    "btnClose": "cerrar",
+    "btnClose": "close",
     "@btnClose": {
         "description": "A label to close button"
     },
-    "btnShare": "compartir",
+    "btnShare": "share",
     "@btnShare": {
         "description": "A label to share button"
     },
-    "btnHome": "inicio",
+    "btnHome": "home",
     "@btnHome": {
         "description": "A label to home button"
     },
-    "btnContinue": "continuar",
+    "btnContinue": "continue",
     "@btnContinue": {
         "description": "A label to continue button"
     },
-    "btnGoToExposition": "ir a exposición",
+    "btnGoToExposition": "go to exposition",
     "@btnGoToExposition": {
         "description": "A label to start exposition button"
     },
-    "otherMuseums": "otros museos",
+    "otherMuseums": "otthers museums",
     "@otherMuseums": {
         "description": "A label for other museums feature"
     },
-    "infoMuseum": "información del museo",
+    "infoMuseum": "info about museum",
     "@infMuuseum": {
         "description": "A label to info museum square button"
     },
-    "exposition": "exposición",
+    "exposition": "exposition",
     "@exposition": {
         "description": "A label to exposition uses"
     },
-    "schedules": "horarios",
+    "schedules": "schedules",
     "@schedules": {
         "description": "A label to schedules details",
         "context": "museum details and other museums"
     },
-    "contact": "contacto",
+    "contact": "contact",
     "@contact": {
         "description": "A label to contact details",
         "context": "museum details"
     },
-    "phone": "teléfono",
+    "phone": "phone number",
     "@phone": {
         "description": "A label to phone number",
         "context": "museum details and other museums"
     },
-    "prices": "tarifas",
+    "prices": "prices",
     "@prices": {
         "description": "A label to price details",
         "context": "museum details and other museums"
     },
-    "website": "sitio web",
+    "website": "web site",
     "@website": {
         "description": "A label to open website button",
         "context": "museum details and other museums"
     },
-    "selectOtherMuseums": "seleccione otros museos en España para más detalles",
+    "selectOtherMuseums": "select other museums in Spain for more details",
     "@selectOtherMuseums": {
         "description": "A message to explain pick other museums action",
         "context": "other museums"
     },
-    "province": "provincia",
+    "province": "province",
     "@province": {
         "description": "A label to province",
         "context": "other museums"
     },
-    "finishExposition": "fin de la exposición",
+    "finishExposition": "end of exposition",
     "@finishExposition": {
         "description": "A message to finish exposition",
         "context": "finish exposition"
     },
-    "youFinishExposition": "{name}, has finalizado tu visita a la exposición",
+    "youFinishExposition": "{name}, you have finished your visit to the exposition",
     "@youFinishExposition": {
         "placeholders": {
             "name": {
@@ -92,72 +92,72 @@
         "description": "A subtitle message to finish exposition",
         "context": "finish exposition"
     },
-    "favoriteExpositionPiece": "parece que esta pieza ha sido la que más te ha gustado. si quieres puedes compartirla en tus redes sociales",
+    "favoriteExpositionPiece": "It seems that this piece has been the one you liked the most. if you want you can share it on your social networks",
     "@favoriteExpositionPiece": {
         "description": "A message to show the favorite pice of exposition",
         "context": "finish exposition"
     },
-    "findOtherMuseums": "también puedes ver donde se encuentran otros museos",
+    "findOtherMuseums": "you can also see where other museums are located",
     "@findOtherMuseums": {
         "description": "A message for navigate to other museums",
         "context": "finish exposition"
     },
-    "description": "descripción",
+    "description": "description",
     "@description": {
         "description": "A label to description details",
         "context": "exposition"
     },
-    "audioGuide": "audio guía",
+    "audioGuide": "audio guide",
     "@audioGuide": {
         "description": "A label to audio guide button",
         "context": "exposition"
     },
-    "dating": "datación",
+    "dating": "dating",
     "@dating": {
         "description": "A label to dating details",
         "context": "exposition"
     },
-    "technique": "técnica",
+    "technique": "technique",
     "@technique": {
         "description": "A label to technique details",
         "context": "exposition"
     },
-    "placeOfOrigin": "lugar de procedencia",
+    "placeOfOrigin": "place of origin",
     "@placeOfOrigin": {
         "description": "A label to place of origin details",
         "context": "exposition"
     },
-    "customizeYourGuide": "personalizar tu guía",
+    "customizeYourGuide": "customize your guide",
     "@customizeYourGuide": {
         "description": "A title to customize exposition",
         "context": "customize exposition"
     },
-    "yourName": "tu nombre",
+    "yourName": "your name",
     "@yourName": {
         "description": "A label to name form",
         "context": "customize exposition"
     },
-    "languageSelect": "idioma de textos y audios guía",
+    "languageSelect": "language of texts and audio guides",
     "@languageSelect": {
         "description": "A label to select context app languange",
         "context": "customize exposition"
     },
-    "textSizeSelect": "tamaño de los textos",
+    "textSizeSelect": "text sizes",
     "@textSizeSelect": {
         "description": "A label to select text size",
         "context": "customize exposition"
     },
-    "automaticPlaySelect": "reproducir audios guía automáticamente (necesario auriculares)",
+    "automaticPlaySelect": "play audio guides automatically (headphones required)",
     "@automaticPlaySelect": {
         "description": "A label to select if play automatically the audio guide",
         "context": "customize exposition"
     },
-    "dataSafeInfo": "estos datos no son usados para ningún fin fuera de la app de este dispositivo",
+    "dataSafeInfo": "this data is not used for any purpose outside the app of this device",
     "@dataSafeInfo": {
         "description": "A message to info about safe data",
         "context": "customize exposition"
     },
-    "languages": "{languages, select, en{inglés} fr{francés} it{italiano} es{español} pt{portugués} other{desconocido}}",
+    "languages": "{languages, select, en{english} fr{french} it{italian} es{spanish} pt{portuguese} other{unknown}}",
     "@languages": {
         "description": "A label to language options",
         "placeholders": {
@@ -169,7 +169,7 @@
         },
         "context": "home and customize exposition"
     },
-    "textSizes": "{sizes, select, small{pequeño (x0.75)} medium{médio} big{grande (x1.5)} extraBig{extra grande (x2.0)} other{por defecto}}",
+    "textSizes": "{sizes, select, small{small (x0.75)} medium{medium} big{big (x1.5)} extraBig{extra big (x2.0)} other{by default}}",
     "@textSizes": {
         "description": "A label to language options",
         "placeholders": {
